@@ -1,15 +1,17 @@
 ---
-export interface Props {
-  content: string
+interface Props {
+  title?: string
+  content?: string
 }
 
-const { content } = Astro.props
+const { title, content } = Astro.props
+const text = title || content || ''
 ---
 
 <h2
   class="divider mb-4 mt-4 h-auto table select-none whitespace-nowrap text-center color-[var(--grey-4)] font-700 line-height-none tracking-0.2 uppercase"
 >
-  {content}
+  {text}
 </h2>
 
 <style>

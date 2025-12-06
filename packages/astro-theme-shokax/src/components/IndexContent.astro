@@ -1,0 +1,70 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import PostCard from './PostCard.astro'
+import Divider from './Divider.astro'
+
+interface Props {
+  posts: CollectionEntry<'posts'>[]
+}
+
+const { posts } = Astro.props
+---
+
+<div class="index-content">
+  {
+    posts.length > 0 ? (
+      <>
+        <Divider title="Posts" />
+        <div class="segments posts-grid">
+          {posts.map((post, index) => (
+            <div style={`animation-delay: ${index * 0.1}s`}>
+              <PostCard post={post} />
+            </div>
+          ))}
+        </div>
+      </>
+    ) : (
+      <div class="no-posts">
+        <p>No posts available yet.</p>
+      </div>
+    )
+  }
+</div>
+
+<style>
+  .index-content {
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .segments.posts-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+    margin: 2rem 0;
+  }
+
+  .segments.posts-grid > div {
+    width: calc(50% - 1rem);
+    min-width: calc(50% - 1rem);
+  }
+
+  @media (max-width: 768px) {
+    .segments.posts-grid > div {
+      width: calc(100% - 1rem) !important;
+      min-width: calc(100% - 1rem) !important;
+    }
+  }
+
+  .no-posts {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: var(--grey-5);
+  }
+
+  .no-posts p {
+    font-size: 1.125rem;
+  }
+</style>
