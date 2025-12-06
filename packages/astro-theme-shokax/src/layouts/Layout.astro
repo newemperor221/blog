@@ -1,0 +1,27 @@
+---
+import NavBar from '../components/navbar/NavBar.vue'
+
+import themeConfig from '../theme.config.ts'
+
+const navLinks = themeConfig.nav
+const siteName = themeConfig.siteName
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro Basics</title>
+  </head>
+  <body>
+    <NavBar client:only="vue" name={siteName} navLinks={navLinks} clickToggleCallback={() => void 0} />
+    <main class="mt-12.5">
+      <slot />
+    </main>
+  </body>
+</html>
+
+<style></style>
