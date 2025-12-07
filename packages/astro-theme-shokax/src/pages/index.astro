@@ -6,12 +6,60 @@ import { getCollection } from 'astro:content'
 // Fetch all posts
 const allPosts = await getCollection('posts')
 
-// Sort posts by date, newest first, and filter out drafts
-const posts = allPosts
-  .filter((post) => !post.data.draft)
+// Filter out drafts
+const publishedPosts = allPosts.filter((post) => !post.data.draft)
+
+// Separate sticky posts and regular posts
+const stickyPosts = publishedPosts
+  .filter((post) => post.data.sticky === true)
   .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+
+const regularPosts = publishedPosts
+  .filter((post) => !post.data.sticky)
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+
+// Build category list with post counts
+const categoryMap = new Map<string, {
+  name: string
+  posts: Array<{ title: string; slug: string }>
+}>()
+
+publishedPosts.forEach((post) => {
+  const categories = post.data.categories || []
+  categories.forEach((cat) => {
+    if (!categoryMap.has(cat)) {
+      categoryMap.set(cat, {
+        name: cat,
+        posts: []
+      })
+    }
+    categoryMap.get(cat)!.posts.push({
+      title: post.data.title,
+      slug: post.id
+    })
+  })
+})
+
+// Transform categories for CategoryCards component
+const categories = Array.from(categoryMap.entries())
+  .map(([name, data]) => ({
+    name,
+    url: `/categories/${name}`,
+    postCount: data.posts.length,
+    posts: data.posts.slice(0, 6).map(p => ({
+      title: p.title,
+      url: `/posts/${p.slug}`
+    }))
+  }))
+  .sort((a, b) => b.postCount - a.postCount)
+  .slice(0, 6) // Show top 6 categories
 ---
 
 <Layout>
-  <IndexContent posts={posts} />
+  <IndexContent 
+    posts={regularPosts} 
+    stickyPosts={stickyPosts}
+    categories={categories}
+    isFirstPage={true}
+  />
 </Layout>

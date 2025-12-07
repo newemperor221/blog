@@ -30,6 +30,7 @@
   let panels: Array<{ id: string, title: string, hasContent: boolean }> = []
   let activePanel: string = 'overview'
   let sidebarElement: HTMLElement | null = null
+  let isAffix = false
 
   // Determine menu source: use config.menu if provided, otherwise use navLinks
   $: menuSource = config.menu !== undefined ? config.menu : navLinks
@@ -71,6 +72,41 @@
       initSidebarTOC(sidebarElement)
       initMenuActive()
     }
+
+    // Handle scroll for affix behavior on desktop
+    const handleScroll = () => {
+      // Calculate header height: nav (3.125rem = 50px) + header cover (70vh) + waves
+      // Using the same calculation as old project
+      const headerElement = document.querySelector('#imgs') as HTMLElement | null
+      const navElement = document.querySelector('#nav') as HTMLElement | null
+      const wavesElement = document.querySelector('#waves') as HTMLElement | null
+
+      let headerHeight = 0
+      if (headerElement) {
+        headerHeight = headerElement.offsetHeight
+      }
+      if (navElement) {
+        headerHeight += navElement.offsetHeight
+      }
+      if (wavesElement) {
+        headerHeight += wavesElement.offsetHeight
+      }
+
+      // Apply affix when scrolled past header and on desktop (width >= 1024px)
+      const shouldAffix = window.scrollY > headerHeight && window.innerWidth >= 1024
+      isAffix = shouldAffix
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    window.addEventListener('resize', handleScroll, { passive: true })
+
+    // Initial check
+    handleScroll()
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleScroll)
+    }
   })
 
   const selectPanel = (panelId: string) => {
@@ -89,7 +125,7 @@
   id='sidebar'
   class={`sidebar ${
     $sidebarOpen ? 'sidebar-open' : 'sidebar-closed'
-  }`}
+  } ${isAffix ? 'affix' : ''}`.trim()}
 >
   <div class='inner'>
     <div class='panels-wrapper'>
@@ -124,7 +160,7 @@
   /* Sidebar container */
   #sidebar {
     position: fixed;
-    right: 0;
+    left: 0;
     top: 3.125rem;
     bottom: 0;
     z-index: 8;
@@ -133,13 +169,13 @@
     height: calc(100vh - 3.125rem);
     overflow-y: auto;
     background: var(--grey-0);
-    box-shadow: -0.25rem 0 1rem rgba(0, 0, 0, 0.3);
+    box-shadow: 0.25rem 0 1rem rgba(0, 0, 0, 0.3);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   /* Mobile closed state */
   .sidebar-closed {
-    transform: translateX(100%);
+    transform: translateX(-100%);
   }
 
   /* Mobile open state */
@@ -158,21 +194,36 @@
       transform: none !important;
     }
 
+    /* Affix styles for desktop */
+    #sidebar.affix > .inner {
+      position: fixed;
+      top: 0;
+    }
+
+    #sidebar.affix .panels {
+      padding-top: 3.625rem;
+      height: 100vh;
+    }
+
     .sidebar-closed,
     .sidebar-open {
       transform: none !important;
     }
   }
 
+  /* Additional sidebar styles */
   .sidebar {
-    position: static;
-    overflow: scroll;
-    width: 280px;
     scrollbar-width: none;
   }
 
   .sidebar::-webkit-scrollbar {
     display: none;
+  }
+
+  @media (min-width: 1024px) {
+    .sidebar {
+      overflow: scroll;
+    }
   }
 
   .sidebar .inner {

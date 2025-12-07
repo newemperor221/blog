@@ -93,16 +93,16 @@
 </script>
 
 <nav class='menu'>
-  {#each menuItems as item (item.type === 'nav' ? item.data.href : item.key)}
-    {#if item.type === 'nav'}
-      {@const navItem = item.data}
-      {@const icon = getMenuIcon(navItem)}
-      {@const text = navItem.text}
-      {@const url = navItem.href}
-      {@const dropboxItems = navItem.dropboxItems || []}
+  <ul class='menu-list'>
+    {#each menuItems as item (item.type === 'nav' ? item.data.href : item.key)}
+      {#if item.type === 'nav'}
+        {@const navItem = item.data}
+        {@const icon = getMenuIcon(navItem)}
+        {@const text = navItem.text}
+        {@const url = navItem.href}
+        {@const dropboxItems = navItem.dropboxItems || []}
 
-      {#if item.isDropdown && dropboxItems.length > 0}
-        <ul class='menu-list'>
+        {#if item.isDropdown && dropboxItems.length > 0}
           <li class='item dropdown'>
             <a href={url} rel='section'>
               {#if icon}
@@ -123,9 +123,7 @@
               {/each}
             </ul>
           </li>
-        </ul>
-      {:else}
-        <ul class='menu-list'>
+        {:else}
           <li class='item'>
             <a href={url} rel='section'>
               {#if icon}
@@ -134,17 +132,15 @@
               {text}
             </a>
           </li>
-        </ul>
-      {/if}
-    {:else}
-      {@const configData = item.data}
-      {@const icon = getMenuIcon(configData)}
-      {@const text = getMenuText(configData, item.key)}
-      {@const url = getMenuUrl(configData)}
-      {@const dropboxItems = getDropboxItems(configData)}
+        {/if}
+      {:else}
+        {@const configData = item.data}
+        {@const icon = getMenuIcon(configData)}
+        {@const text = getMenuText(configData, item.key)}
+        {@const url = getMenuUrl(configData)}
+        {@const dropboxItems = getDropboxItems(configData)}
 
-      {#if item.isDropdown && dropboxItems.length > 0}
-        <ul class='menu-list'>
+        {#if item.isDropdown && dropboxItems.length > 0}
           <li class='item dropdown'>
             <a href={url === '/' ? '#' : url} rel='section' on:click={(e) => {
               if (url === '/')
@@ -168,9 +164,7 @@
               {/each}
             </ul>
           </li>
-        </ul>
-      {:else}
-        <ul class='menu-list'>
+        {:else}
           <li class='item'>
             <a href={url} rel='section'>
               {#if icon}
@@ -179,10 +173,10 @@
               {text}
             </a>
           </li>
-        </ul>
+        {/if}
       {/if}
-    {/if}
-  {/each}
+    {/each}
+  </ul>
 </nav>
 
 <style>

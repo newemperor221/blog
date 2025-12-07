@@ -16,6 +16,7 @@ const posts = defineCollection({
     categories: z.array(z.string()).optional(),
     draft: z.boolean().optional(),
     cover: z.string().optional(),
+    sticky: z.boolean().optional(),
   })
 })
 

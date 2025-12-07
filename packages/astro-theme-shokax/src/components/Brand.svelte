@@ -52,12 +52,12 @@
 
 <style>
   #brand {
-    z-index: 0;
+    z-index: auto;
     transition: all 0.3s ease;
   }
 
   #brand.affix {
-    z-index: 1;
+    z-index: 0;
   }
 
   .pjax {

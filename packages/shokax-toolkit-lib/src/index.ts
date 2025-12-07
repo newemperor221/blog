@@ -3,6 +3,8 @@
 import { formatCategories } from './posts/formatCategories'
 import { generateTagCloud } from './posts/generateTagCloud'
 import { structurePostsByDate } from './posts/structurePostsByDate'
+import { calculatePostStats, calculateTotalWords, formatReadingTime } from './posts/calculateStats'
+import { getRandomItems, shuffleArray } from './posts/randomPosts'
 import { fmtNum } from './tools/fmtNum'
 import { generateRandomBrightColor } from './tools/generateRandomBrightColor'
 
@@ -10,6 +12,11 @@ export default {
   formatCategories,
   structurePostsByDate,
   generateTagCloud,
+  calculatePostStats,
+  calculateTotalWords,
+  formatReadingTime,
+  getRandomItems,
+  shuffleArray,
   generateRandomBrightColor,
   fmtNum,
 }

@@ -15,12 +15,36 @@ interface CoverConfig {
   covers?: string[]
 }
 
+interface FooterConfig {
+  since?: number
+  icon?: {
+    name?: string
+    color?: string
+  }
+  count?: boolean
+  powered?: boolean
+  icp?: {
+    enable?: boolean
+    icon?: string
+    icpnumber?: string
+    beian?: string
+    recordcode?: string
+  }
+}
+
+interface WidgetsConfig {
+  randomPosts?: boolean
+  recentComments?: boolean
+}
+
 interface ShokaXThemeConfig {
   siteName: string
   nav: NavItemType[]
   sidebar?: SidebarConfig
   brand?: BrandConfig
   cover?: CoverConfig
+  footer?: FooterConfig
+  widgets?: WidgetsConfig
 }
 
 function defineConfig(config: ShokaXThemeConfig) {
@@ -110,5 +134,25 @@ export default defineConfig({
     //     icon: 'i-ri-home-2-fill',
     //   },
     // ]
+  },
+  footer: {
+    since: 2022,
+    icon: {
+      name: 'sakura rotate',
+      color: '#ffc0cb',
+    },
+    count: true,
+    powered: true,
+    icp: {
+      enable: false,
+      // icon: '/beian-icon.png',
+      // icpnumber: 'ICP12345678',
+      // beian: '网安备案号',
+      // recordcode: 'xxxxx',
+    },
+  },
+  widgets: {
+    randomPosts: true,
+    recentComments: true,
   },
 })

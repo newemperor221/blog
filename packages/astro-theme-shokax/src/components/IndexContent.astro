@@ -1,61 +1,129 @@
 ---
 import type { CollectionEntry } from 'astro:content'
-import PostCard from './PostCard.astro'
+import PostSegments from './PostSegments.svelte'
+import CategoryCards from './CategoryCards.svelte'
 import Divider from './Divider.astro'
+
+interface CategoryItem {
+  name: string
+  url: string
+  cover?: string
+  topCategory?: {
+    name: string
+    url: string
+  }
+  postCount: number
+  childCount?: number
+  posts: Array<{ title: string; url: string }>
+}
 
 interface Props {
   posts: CollectionEntry<'posts'>[]
+  stickyPosts?: CollectionEntry<'posts'>[]
+  categories?: CategoryItem[]
+  isFirstPage?: boolean
 }
 
-const { posts } = Astro.props
+const { posts, stickyPosts = [], categories = [], isFirstPage = true } = Astro.props
+
+// Helper function to calculate word count
+function calculateWordCount(text: string): number {
+  // Remove HTML tags and count words
+  const plainText = text.replace(/<[^>]*>/g, '')
+  // Count Chinese characters and English words
+  const chineseChars = (plainText.match(/[\u4e00-\u9fa5]/g) || []).length
+  const englishWords = (plainText.match(/[a-zA-Z]+/g) || []).length
+  return chineseChars + englishWords
+}
+
+// Helper function to calculate read time (assuming 300 words per minute)
+function calculateReadTime(wordCount: number): number {
+  const wordsPerMinute = 300
+  return Math.ceil(wordCount / wordsPerMinute)
+}
+
+// Helper function to transform posts
+function transformPosts(postList: CollectionEntry<'posts'>[]) {
+  return postList.map((post) => {
+    const wordCount = calculateWordCount(post.body || '')
+    const readTime = calculateReadTime(wordCount)
+    const lastCategory = post.data.categories?.[post.data.categories.length - 1]
+    
+    return {
+      title: post.data.title,
+      url: `/posts/${post.id}`,
+      date: post.data.date,
+      excerpt: post.data.description || post.body?.substring(0, 300) || '',
+      cover: post.data.cover,
+      category: lastCategory,
+      categoryUrl: lastCategory ? `/categories/${lastCategory}` : undefined,
+      wordCount,
+      readTime
+    }
+  })
+}
+
+const transformedStickyPosts = transformPosts(stickyPosts)
+const transformedPosts = transformPosts(posts)
 ---
 
-<div class="index-content">
-  {
-    posts.length > 0 ? (
-      <>
-        <Divider title="Posts" />
-        <div class="segments posts-grid">
-          {posts.map((post, index) => (
-            <div style={`animation-delay: ${index * 0.1}s`}>
-              <PostCard post={post} />
-            </div>
-          ))}
-        </div>
-      </>
-    ) : (
-      <div class="no-posts">
-        <p>No posts available yet.</p>
+<div class="index wrap">
+  {isFirstPage && transformedStickyPosts.length > 0 && (
+    <>
+      <Divider title="置顶文章" />
+      <div class="segments sticky">
+        <PostSegments posts={transformedStickyPosts} client:load />
       </div>
-    )
-  }
+    </>
+  )}
+
+  {isFirstPage && categories.length > 0 && (
+    <>
+      <Divider title="分类" />
+      <div class="cards">
+        <CategoryCards categories={categories} client:load />
+      </div>
+    </>
+  )}
+
+  {transformedPosts.length > 0 ? (
+    <>
+      {isFirstPage && <Divider title="最新文章" />}
+      <div class="segments posts">
+        <PostSegments posts={transformedPosts} client:load />
+      </div>
+    </>
+  ) : (
+    <div class="no-posts">
+      <p>暂无文章</p>
+    </div>
+  )}
 </div>
 
 <style>
-  .index-content {
-    max-width: 120rem;
-    margin: 0 auto;
-    padding: 0 2rem;
+  .index.wrap {
+    position: relative;
+    padding: 1.25rem;
   }
 
-  .segments.posts-grid {
+  .segments {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .segments.sticky,
+  .segments.posts {
+    margin: 0;
+    width: 100%;
+  }
+
+  .cards {
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 2rem;
-    margin: 2rem 0;
-  }
-
-  .segments.posts-grid > div {
-    width: calc(50% - 1rem);
-    min-width: calc(50% - 1rem);
-  }
-
-  @media (max-width: 768px) {
-    .segments.posts-grid > div {
-      width: calc(100% - 1rem) !important;
-      min-width: calc(100% - 1rem) !important;
-    }
   }
 
   .no-posts {
@@ -66,5 +134,17 @@ const { posts } = Astro.props
 
   .no-posts p {
     font-size: 1.125rem;
+  }
+
+  @media (max-width: 820px) {
+    .index.wrap {
+      padding: 0.625rem;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .index.wrap {
+      padding: 0.5rem;
+    }
   }
 </style>

@@ -32,9 +32,10 @@
 </script>
 
 {#if enableCover && mounted}
+  <div class='h-60vh'></div>
   <div
     id='imgs'
-    class='imgs-container bg-[#363636] h-70vh min-h-400px w-full left-0 top-0 fixed -z-9'
+    class='imgs-container bg-[#363636] h-70vh min-h-[25rem] w-full left-0 top-0 fixed -z-9'
   >
     {#if isMultipleImages}
       <!-- 多图轮播模式 -->

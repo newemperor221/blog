@@ -50,6 +50,17 @@ const commonSidebarIcons = [
   'i-ri-facebook-circle-fill',
   'i-ri-menu-line',
   'i-ri-arrow-drop-down-fill',
+  // Footer and widgets icons
+  'i-ri-sakura',
+  'i-sakura',
+  'i-ri-chart-area',
+  'i-ri-coffee',
+  'i-ri-link-alt',
+  // Post segment icons
+  'i-ri-calendar-line',
+  'i-ri-pencil-line',
+  'i-ri-time-line',
+  'i-ri-flag-line',
 ]
 
 export default defineConfig({

@@ -15,6 +15,6 @@
 @media (max-width: 768px) {
   #imgs {
     height: 50vh;
-    min-height: 20rem;
+    min-height: 25rem;
   }
 }

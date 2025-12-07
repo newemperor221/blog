@@ -1,80 +1,76 @@
-<script lang='ts'>
-  import { onMount } from 'svelte'
-
-  let parallaxOffset = $state(0)
-
-  onMount(() => {
-    if (typeof window === 'undefined' || typeof document === 'undefined')
-      return
-
-    const handleScroll = () => {
-      parallaxOffset = window.scrollY * 0.5
-    }
-
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  })
-</script>
-
-<div class='waves-container bg-[var(--nav-bg)] h-15.625rem min-h-6.25rem w-full relative overflow-hidden -mt-1px md:h-6.25rem md:min-h-3.125rem'>
-  <svg
-    class='waves-svg bg-[var(--nav-bg)] h-full min-h-100px w-full block relative'
-    xmlns='http://www.w3.org/2000/svg'
-    xmlns:xlink='http://www.w3.org/1999/xlink'
-    viewBox='0 24 150 28'
-    preserveAspectRatio='none'
-    shape-rendering='auto'
-  >
-    <defs>
-      <path
-        id='gentle-wave'
-        d='M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z'
-      />
-    </defs>
-    <g class='parallax' style='transform: translateY({parallaxOffset}px)'>
-      <use xlink:href='#gentle-wave' x='48' y='0' class='wave-1' />
-      <use xlink:href='#gentle-wave' x='48' y='3' class='wave-2' />
-      <use xlink:href='#gentle-wave' x='48' y='5' class='wave-3' />
-      <use xlink:href='#gentle-wave' x='48' y='7' class='wave-4' />
-    </g>
-  </svg>
-</div>
+<svg
+  class='waves w-full h-15vh mb-[-0.6875rem] min-h-[3.125rem] max-h-[9.375rem] relative md:h-10vh'
+  xmlns='http://www.w3.org/2000/svg'
+  xmlns:xlink='http://www.w3.org/1999/xlink'
+  viewBox='0 24 150 28'
+  preserveAspectRatio='none'
+  shape-rendering='auto'
+>
+  <defs>
+    <path
+      id='gentle-wave'
+      d='M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z'
+    />
+  </defs>
+  <g class='parallax'>
+    <use xlink:href='#gentle-wave' x='48' y='0' />
+    <use xlink:href='#gentle-wave' x='48' y='3' />
+    <use xlink:href='#gentle-wave' x='48' y='5' />
+    <use xlink:href='#gentle-wave' x='48' y='7' />
+  </g>
+</svg>
 
 <style>
-  :global(.waves-svg use) {
-    animation: wave 15s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+  .waves {
+    content-visibility: auto;
+    contain-intrinsic-size: 100vw 15vh;
   }
 
-  :global(.waves-svg use.wave-1) {
+  @media (max-width: 768px) {
+    .waves {
+      contain-intrinsic-size: 100vw 10vh;
+    }
+  }
+
+  /* Animation */
+  .parallax > :global(use) {
+    animation: wave 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+  }
+
+  .parallax > :global(use.stop-animation) {
+    animation-play-state: paused;
+  }
+
+  .parallax > :global(use):nth-child(1) {
     animation-delay: -2s;
-    animation-direction: reverse;
-    opacity: 1;
+    animation-duration: 7s;
+    fill: var(--grey-1-a7);
   }
 
-  :global(.waves-svg use.wave-2) {
+  .parallax > :global(use):nth-child(2) {
     animation-delay: -3s;
-    animation-direction: reverse;
-    opacity: 0.5;
+    animation-duration: 10s;
+    fill: var(--grey-1-a5);
   }
 
-  :global(.waves-svg use.wave-3) {
+  .parallax > :global(use):nth-child(3) {
     animation-delay: -4s;
-    animation-direction: reverse;
-    opacity: 0.33;
+    animation-duration: 13s;
+    fill: var(--grey-1-a3);
   }
 
-  :global(.waves-svg use.wave-4) {
+  .parallax > :global(use):nth-child(4) {
     animation-delay: -5s;
-    animation-direction: reverse;
-    opacity: 0.25;
+    animation-duration: 20s;
+    fill: var(--grey-1);
   }
 
   @keyframes wave {
     0% {
-      transform: translateX(0);
+      transform: translate3d(-90px, 0, 0);
     }
     100% {
-      transform: translateX(50px);
+      transform: translate3d(85px, 0, 0);
     }
   }
 </style>

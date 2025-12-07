@@ -19,6 +19,7 @@
     "@unocss/preset-icons": "^66.5.10",
     "@unocss/preset-wind4": "^66.5.10",
     "@unocss/reset": "^66.5.10",
+    "es-toolkit": "^1.42.0",
     "svelte": "^5.45.6",
     "unocss": "^66.5.10"
   },
