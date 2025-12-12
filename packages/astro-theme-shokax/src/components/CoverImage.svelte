@@ -25,7 +25,7 @@
   {#if isListItem}
     <!-- 多图轮播模式 -->
     <li
-      class='cover-item opacity-0 h-full w-full left-0 top-0 absolute z-0 bg-cover bg-center bg-no-repeat'
+      class='cover-item opacity-0 h-70vh w-full left-0 top-0 absolute z-0 bg-cover bg-center bg-no-repeat'
       class:stop-animation={stopAnimation}
       style="background-image: url('{src}'); animation-delay: {animationDelay};"
       onmouseenter={() => (stopAnimation = true)}

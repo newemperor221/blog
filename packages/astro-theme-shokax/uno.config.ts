@@ -80,6 +80,8 @@ const commonSidebarIcons = [
   'i-ri-arrow-up-line',
   'i-ri-arrow-down-line',
   'i-ri-arrow-right-s-line',
+  // Archive page icons
+  'i-ri-external-link-line',
 ]
 
 export default defineConfig({
