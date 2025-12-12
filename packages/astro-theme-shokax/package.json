@@ -15,6 +15,7 @@
     "@vueuse/core": "^14.1.0",
     "astro": "^5.16.4",
     "es-toolkit": "^1.42.0",
+    "shokax-toolkit-lib": "workspace:*",
     "svelte": "^5.45.6",
     "typescript": "^5.9.3",
     "vue": "^3.5.25"

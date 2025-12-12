@@ -8,6 +8,23 @@ import { getRandomItems, shuffleArray } from './posts/randomPosts'
 import { fmtNum } from './tools/fmtNum'
 import { generateRandomBrightColor } from './tools/generateRandomBrightColor'
 
+// Named exports
+export {
+  formatCategories,
+  structurePostsByDate,
+  generateTagCloud,
+  calculatePostStats,
+  calculateTotalWords,
+  formatReadingTime,
+  getRandomItems,
+  shuffleArray,
+  generateRandomBrightColor,
+  fmtNum,
+}
+
+// Re-export types
+export type { Category, Post } from './posts/types'
+
 export default {
   formatCategories,
   structurePostsByDate,

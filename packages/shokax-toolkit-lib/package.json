@@ -5,6 +5,19 @@
   "private": true,
   "packageManager": "bun@1.3.0",
   "sideEffects": false,
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts",
+      "types": "./src/index.ts"
+    },
+    "./posts/*": {
+      "import": "./src/posts/*.ts",
+      "types": "./src/posts/*.ts"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
