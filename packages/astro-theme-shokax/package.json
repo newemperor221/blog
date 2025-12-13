@@ -6,7 +6,8 @@
     "dev": "bunx --bun astro dev",
     "build": "bunx --bun astro build",
     "preview": "bunx --bun astro preview",
-    "astro": "bunx --bun astro"
+    "astro": "bunx --bun astro",
+    "check-types": "bunx --bun astro check"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",

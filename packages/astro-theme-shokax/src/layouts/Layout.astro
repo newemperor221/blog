@@ -8,6 +8,7 @@ import Footer from '../components/footer/Footer.astro'
 import Widgets from '../components/footer/Widgets.svelte'
 import { getCollection } from 'astro:content'
 import type { TocItem, RelatedPost, QuickNavigation } from '../components/sidebar/SidebarTypes'
+import { ClientRouter } from 'astro:transitions'
 
 import themeConfig from '../theme.config.ts'
 
@@ -55,6 +56,8 @@ const posts = allPosts.filter((post) => !post.data.draft)
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>Astro Basics</title>
+
+    <ClientRouter />
   </head>
   <body>
     <div id="container">

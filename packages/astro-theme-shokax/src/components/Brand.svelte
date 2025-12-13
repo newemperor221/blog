@@ -60,7 +60,7 @@
 
 <div
   id='brand'
-  class={`fixed w-full px-20 pt-12 text-center h-[50vh] min-h-40 flex flex-col items-center justify-center ${isAffix ? 'affix' : ''}`.trim()}
+  class={`color-[var(--grey-3)]  fixed w-full px-20 pt-12 text-center h-[50vh] min-h-40 flex flex-col items-center justify-center ${isAffix ? 'affix' : ''}`.trim()}
 >
   <div class='pjax flex flex-col w-full items-center justify-center'>
     {#if logo}
@@ -84,18 +84,18 @@
     {/if}
 
     {#if shouldShowPostMeta && postMeta}
-      <div class='meta text-base mt-2.5 flex flex-wrap gap-3 justify-center items-center opacity-80'>
-        <span class='item flex items-center gap-1' title='发表于 {formatDate(postMeta.date)}'>
+      <div class='meta text-base mt-2.5 opacity-80 flex flex-wrap gap-3 items-center justify-center'>
+        <span class='item flex gap-1 items-center' title='发表于 {formatDate(postMeta.date)}'>
           <i class='i-ri-calendar-line'></i>
           <span class='text'>发表于</span>
           <time datetime={postMeta.date.toISOString()}>{formatDate(postMeta.date)}</time>
         </span>
-        <span class='item flex items-center gap-1' title='本文字数'>
+        <span class='item flex gap-1 items-center' title='本文字数'>
           <i class='i-ri-quill-pen-line'></i>
           <span class='text'>本文字数</span>
           <span>{formatWordCount(postMeta.wordCount)}字</span>
         </span>
-        <span class='item flex items-center gap-1' title='阅读时长'>
+        <span class='item flex gap-1 items-center' title='阅读时长'>
           <i class='i-ri-time-line'></i>
           <span class='text'>阅读时长</span>
           <span>{postMeta.readTime} 分钟</span>
