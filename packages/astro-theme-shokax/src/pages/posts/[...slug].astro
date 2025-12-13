@@ -61,7 +61,28 @@ export async function getStaticPaths() {
   })
 }
 
-const { post, prevPost, nextPost, relatedPosts } = Astro.props
+const { post, prevPost, nextPost, relatedPosts } = Astro.props as {
+  post: import('astro:content').CollectionEntry<'posts'>
+  prevPost?: {
+    title: string
+    slug: string
+    category?: string
+    cover?: string
+  }
+  nextPost?: {
+    title: string
+    slug: string
+    category?: string
+    cover?: string
+  }
+  relatedPosts: {
+    slug: string
+    title: string
+    date: Date
+    category?: string
+  }[]
+}
+
 const { Content, headings } = await render(post)
 
 // Build TOC from headings
