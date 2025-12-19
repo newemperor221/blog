@@ -1,8 +1,11 @@
 <script lang='ts'>
-  import type { StateConfig } from './SidebarTypes'
 
   interface Props {
-    state?: StateConfig
+    state: {
+      categories: number
+      posts: number
+      tags: number
+    }
   }
 
   const { state }: Props = $props()
@@ -12,7 +15,7 @@
   <nav class='state'>
     {#if state.posts && state.posts > 0}
       <div class='item posts'>
-        <a href={state.archiveUrl || '/archives/'}>
+        <a href='/archives/'>
           <span class='count'>{state.posts}</span>
           <span class='name'>Posts</span>
         </a>
@@ -20,7 +23,7 @@
     {/if}
     {#if state.categories && state.categories > 0}
       <div class='item categories'>
-        <a href={state.categoryUrl || '/categories/'}>
+        <a href='/categories/'>
           <span class='count'>{state.categories}</span>
           <span class='name'>Categories</span>
         </a>
@@ -28,7 +31,7 @@
     {/if}
     {#if state.tags && state.tags > 0}
       <div class='item tags'>
-        <a href={state.tagUrl || '/tags/'}>
+        <a href='/tags/'>
           <span class='count'>{state.tags}</span>
           <span class='name'>Tags</span>
         </a>

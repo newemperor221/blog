@@ -19,6 +19,11 @@
     relatedPosts?: RelatedPost[]
     currentSlug?: string
     navigation?: QuickNavigation
+    siteState: {
+      categories: number
+      posts: number
+      tags: number
+    }
   }
 
   const {
@@ -27,28 +32,24 @@
       description: '',
       avatar: '',
       social: {},
-      state: {
-        posts: 0,
-        categories: 0,
-        tags: 0,
-        archiveUrl: '/archives/',
-        categoryUrl: '/categories/',
-        tagUrl: '/tags/',
-      },
     },
     navLinks = [],
     toc = [],
     relatedPosts = [],
     currentSlug = '',
     navigation = {},
+    siteState = {
+      categories: 0,
+      posts: 0,
+      tags: 0,
+    },
   }: Props = $props()
 
   let activePanel: PanelType = $state('overview')
   let sidebarElement: HTMLElement | null = $state(null)
   let isAffix = $state(false)
 
-  // Determine menu source: use config.menu if provided, otherwise use navLinks
-  const menuSource = $derived(config.menu !== undefined ? config.menu : navLinks)
+  const menuSource = $derived(navLinks)
 
   // Determine which panels should be available
   const panels: PanelConfig[] = $derived.by(() => {
@@ -167,7 +168,7 @@
             class={activePanel === panel.id ? 'active' : ''}
           >
             {#if panel.id === 'overview'}
-              <SidebarOverview {config} {menuSource} />
+              <SidebarOverview {siteState} {config} {menuSource} />
             {:else if panel.id === 'related'}
               <SidebarRelated posts={relatedPosts} {currentSlug} />
             {:else if panel.id === 'contents'}
