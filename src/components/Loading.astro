@@ -380,6 +380,6 @@
     hideLoading();
   }
 
-  // 备用：确保window.onload时也隐藏
+  document.addEventListener('astro:after-swap', hideLoading);
   window.addEventListener('load', hideLoading);
 </script>
