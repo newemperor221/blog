@@ -125,11 +125,17 @@ const siteState = {
       </main>
     </div>
     <script>
-      import {css} from '@/assets/fonts/MiSans VF.ttf'
+      import { css } from '@/assets/fonts/MiSans-VF.ttf?subsets'
 
-      document.body.style.fontFamily = css.family || 'sans-serif';
+      document.body.style.fontFamily = css.family as string;
     </script>
   </body>
 </html>
 
-<style></style>
+<style>
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+</style>
