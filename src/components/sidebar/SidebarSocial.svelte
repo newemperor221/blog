@@ -2,25 +2,15 @@
   import type { SocialLink } from './SidebarTypes'
 
   interface Props {
-    social?: Record<string, string | SocialLink>
+    social?: Record<string, SocialLink>
   }
 
   const { social = {} }: Props = $props()
-
-  // Helper function to parse old social string format
-  const parseSocialString = (str: string) => {
-    const parts = str.split('||').map(s => s.trim())
-    if (parts.length >= 2) {
-      return { url: parts[0], icon: parts[1], color: parts[2] || '' }
-    }
-    return null
-  }
 </script>
 
 {#if social && Object.keys(social).length > 0}
   <div class='social'>
-    {#each Object.entries(social) as [name, data]}
-      {@const link = typeof data === 'string' ? parseSocialString(data) : data}
+    {#each Object.entries(social) as [name, link]}
       {#if link}
         <a
           href={link.url}

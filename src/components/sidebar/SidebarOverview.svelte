@@ -8,10 +8,15 @@
 
   interface Props {
     config: SidebarConfig
+    siteState: {
+      categories: number
+      posts: number
+      tags: number
+    }
     menuSource: NavItemType[] | any
   }
 
-  const { config, menuSource }: Props = $props()
+  const { config, menuSource, siteState }: Props = $props()
 </script>
 
 <div class='overview'>
@@ -21,7 +26,7 @@
     description={config.description || ''}
   />
 
-  <SidebarState state={config.state} />
+  <SidebarState state={siteState} />
 
   <SidebarSocial social={config.social || {}} />
 

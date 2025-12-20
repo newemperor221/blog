@@ -1,5 +1,5 @@
-import type { NavItemType } from './components/navbar/NavTypes'
-import type { SidebarConfig } from './components/sidebar/SidebarTypes'
+import type { NavItemType } from '@/components/navbar/NavTypes'
+import type { SidebarConfig } from '@/components/sidebar/SidebarTypes'
 
 interface BrandConfig {
   title?: string
@@ -126,7 +126,7 @@ export default defineConfig({
         url: 'mailto:your@email.com',
         icon: 'i-ri-mail-line',
       },
-    },
+    }
   },
   footer: {
     since: 2022,

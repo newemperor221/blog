@@ -46,6 +46,18 @@ const widgetsConfig = themeConfig.widgets || {}
 // Get all posts for widgets
 const allPosts = await getCollection('posts')
 const posts = allPosts.filter((post) => !post.data.draft)
+
+const siteState = {
+  categories: allPosts.reduce((acc, post) => {
+    post.data.categories?.forEach((category) => acc.add(category))
+    return acc
+  }, new Set()).size,
+  posts: posts.length,
+  tags: allPosts.reduce((acc, post) => {
+    post.data.tags?.forEach((tag) => acc.add(tag))
+    return acc
+  }, new Set()).size,
+}
 ---
 
 <!doctype html>
@@ -106,6 +118,7 @@ const posts = allPosts.filter((post) => !post.data.draft)
               relatedPosts={relatedPosts}
               currentSlug={currentSlug}
               navigation={navigation}
+              siteState={siteState}
             />
           </div>
         </div>
