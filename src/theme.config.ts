@@ -73,7 +73,7 @@ export default defineConfig({
     },
   },
   footer: {
-    since: 2022,
+    since: 2025,
     icon: {
       name: "sakura rotate",
       color: "#ffc0cb",

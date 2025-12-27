@@ -1,29 +1,34 @@
-<script lang='ts'>
-  import type { PanelConfig } from './SidebarTypes'
+<script lang="ts">
+  import type { PanelConfig } from "./SidebarTypes";
 
   interface Props {
-    panels?: PanelConfig[]
-    activePanel?: string
-    onSelect?: (panelId: string) => void
+    panels?: PanelConfig[];
+    activePanel?: string;
+    onSelect?: (panelId: string) => void;
   }
 
-  const { panels = [], activePanel = '', onSelect = () => {} }: Props = $props()
+  const {
+    panels = [],
+    activePanel = "",
+    onSelect = () => {},
+  }: Props = $props();
 </script>
 
 {#if panels.length > 1}
-  <ul class='tab'>
+  <ul class="tab">
     {#each panels as panel (panel.id)}
-      {@const iconClass = panel.id === 'contents'
-        ? 'i-ri-list-ordered'
-        : panel.id === 'related'
-        ? 'i-ri-git-branch-line'
-        : panel.id === 'overview' ? 'i-ri-home-2-line' : ''}
+      {@const iconClass =
+        panel.id === "contents"
+          ? "i-ri-list-ordered"
+          : panel.id === "related"
+            ? "i-ri-git-branch-line"
+            : panel.id === "overview"
+              ? "i-ri-home-2-line"
+              : ""}
       <button
-        class={`item ${panel.id} ${
-          activePanel === panel.id ? 'active' : ''
-        }`}
+        class={`item ${panel.id} ${activePanel === panel.id ? "active" : ""}`}
         onclick={() => onSelect(panel.id)}
-        type='button'
+        type="button"
       >
         {#if iconClass}
           <div class={`${iconClass}`}></div>
@@ -67,7 +72,7 @@
   }
 
   .tab .item:nth-child(2) {
-    margin: auto 0.625rem;
+    margin: 0 0.625rem;
   }
 
   .tab .item i {
@@ -81,7 +86,11 @@
 
   .tab .item:hover,
   .tab .item.active {
-    background: linear-gradient(to right, var(--color-pink), var(--color-orange));
+    background: linear-gradient(
+      to right,
+      var(--color-pink),
+      var(--color-orange)
+    );
     color: var(--grey-0);
     box-shadow: 0 0.25rem 0.625rem var(--color-pink-a3);
   }

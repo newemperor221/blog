@@ -1,5 +1,4 @@
 import svelte from "@astrojs/svelte";
-// @ts-check
 import { defineConfig } from "astro/config";
 import esToolkitPlugin from "vite-plugin-es-toolkit";
 import transformerDirectives from "@unocss/transformer-directives";
@@ -42,7 +41,7 @@ export default defineConfig({
   vite: {
     resolve: {
       alias: {
-        "@": new URL("./src", import.meta.url),
+        "@": new URL("./src", import.meta.url).toString(),
       },
     },
     plugins: [

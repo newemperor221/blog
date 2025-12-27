@@ -1,4 +1,6 @@
 ---
+import { generateRandomBrightColor } from '@/toolkit/tools/generateRandomBrightColor'
+
 interface NavPost {
   title: string
   slug: string
@@ -13,12 +15,6 @@ interface Props {
 }
 
 const { prevPost, nextPost, enableGradientCover = false } = Astro.props
-
-// Generate random bright colors for gradient
-function generateRandomBrightColor(): string {
-  const hue = Math.floor(Math.random() * 360)
-  return `hsl(${hue}, 70%, 60%)`
-}
 ---
 
 <div class="post-nav">

@@ -16,7 +16,6 @@ const iconSafeList = themeConfig.nav.flatMap((item) => {
   return icons;
 });
 
-// Add sidebar social and menu icons to safelist
 if (themeConfig.sidebar?.social) {
   Object.values(themeConfig.sidebar.social).forEach((value) => {
     const iconStr = value.icon;
@@ -34,9 +33,6 @@ if (themeConfig.sidebar?.menu) {
     }
   });
 }
-
-// iconSafeList.push('i-ri-file-copy-fill')
-// iconSafeList.push('i-ri-check-fill')
 
 export default defineConfig({
   presets: [presetWind4(), presetIcons(), presetAttributify()],
