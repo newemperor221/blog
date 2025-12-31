@@ -1,6 +1,6 @@
 ---
 import NavBar from "@/components/navbar/NavBar.svelte";
-import Brand from "@/components/Brand.svelte";
+import Brand from "@/components/Brand.astro";
 import Sidebar from "@/components/sidebar/Sidebar.svelte";
 import HeaderCover from "@/components/HeaderCover.astro";
 import Waves from "@/components/Waves.svelte";
@@ -127,7 +127,6 @@ const siteState = {
         clickToggleCallback={() => void 0}
       />
       <Brand
-        client:load
         title={brandConfig.title}
         subtitle={brandConfig.subtitle}
         logo={brandConfig.logo}
