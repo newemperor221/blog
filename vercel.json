@@ -1,7 +1,7 @@
 {
   "framework": "astro",
   "installCommand": "bun install",
-  "buildCommand": "turbo run build",
+  "buildCommand": "bun run build",
   "outputDirectory": "dist",
   "headers": [
     {
