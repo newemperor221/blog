@@ -78,6 +78,7 @@ const siteState = {
 
 // Import CodeBlock to define custom element
 import CodeBlock from "@/components/CodeBlock.svelte";
+import SearchPage from "@/components/search/SearchPage.svelte";
 ---
 
 <!doctype html>
@@ -101,6 +102,7 @@ import CodeBlock from "@/components/CodeBlock.svelte";
       navLinks={navLinks}
       clickToggleCallback={() => void 0}
     />
+    <SearchPage client:idle selector="#search" />
     <Loading />
     <div id="container">
       <HeaderCover
