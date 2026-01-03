@@ -91,7 +91,7 @@
     position: sticky;
     bottom: 0.125rem;
     list-style: none;
-    background: var(--grey-1);
+    background: transparent;
   }
 
   #quick.visible {
@@ -146,7 +146,6 @@
     screen and (min-width: 768px) and (max-width: 1366px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2),
     screen and (min-width: 768px) and (max-width: 1440px) and (-webkit-min-device-pixel-ratio: 1) {
     #quick {
-      position: fixed;
       bottom: 0;
       left: 0;
       right: 0;

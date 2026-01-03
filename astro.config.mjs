@@ -28,10 +28,6 @@ export default defineConfig({
     format: "directory",
   },
 
-  image: {
-    // domains: ["img.cdn.kaitaku.xyz"]
-  },
-
   prefetch: {
     prefetchAll: true,
     defaultStrategy: "hover",

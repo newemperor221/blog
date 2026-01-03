@@ -14,6 +14,7 @@ import type {
 import "@/styles/post.css";
 
 import "katex/dist/katex-swap.min.css";
+import { avatar } from "@/components/Images.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -170,7 +171,7 @@ const postMeta = {
           itemscope
           itemtype="http://schema.org/Person"
         >
-          <meta itemprop="image" content={siteConfig.avatar || "/avatar.jpg"} />
+          <meta itemprop="image" content={avatar.src} />
           <meta itemprop="name" content={author} />
           <meta itemprop="description" content={`${siteName}`} />
         </span>
