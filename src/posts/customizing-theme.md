@@ -11,13 +11,13 @@ draft: false
 
 本文件用于测试以下插件：
 
-* remarkMath
-* remarkRubyDirective
-* remarkIns
-* remarkDirective
-* remarkGfm
-* remarkEmoji
-* remarkExtendedTable
+- remarkMath
+- remarkRubyDirective
+- remarkIns
+- remarkDirective
+- remarkGfm
+- remarkEmoji
+- remarkExtendedTable
 
 ---
 
@@ -63,8 +63,8 @@ WIP
 
 ### 任务列表
 
-* [x] 已完成任务
-* [ ] 未完成任务
+- [x] 已完成任务
+- [ ] 未完成任务
 
 ### 删除线
 
@@ -92,18 +92,18 @@ Markdown 真好用 :heart:，插件更多 :fire:
 
 支持对齐、合并等特性：
 
-|  功能  | 插件                  | 说明       |
-| :--: | :------------------ | :------- |
-| 数学公式 | remarkMath          | 支持 LaTeX |
-|  注音  | remarkRubyDirective | Ruby 标注  |
-|  插入  | remarkIns           | ++插入文本++ |
+|   功能   | 插件                | 说明         |
+| :------: | :------------------ | :----------- |
+| 数学公式 | remarkMath          | 支持 LaTeX   |
+|   注音   | remarkRubyDirective | Ruby 标注    |
+|   插入   | remarkIns           | ++插入文本++ |
 
 带有合并单元格的示例（如果已启用）：
 
-| 模块 | 描述   | 备注      |
-| -- | ---- | ------- |
-| A  | ^    | 单元格向上合并 |
-| B  | 普通内容 | -       |
+| 模块 | 描述     | 备注           |
+| ---- | -------- | -------------- |
+| A    | ^        | 单元格向上合并 |
+| B    | 普通内容 | -              |
 
 ---
 

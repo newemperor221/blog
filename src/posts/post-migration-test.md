@@ -45,40 +45,40 @@ draft: false
 
 ```typescript
 function greet(name: string): string {
-  return `Hello, ${name}!`
+  return `Hello, ${name}!`;
 }
 
-console.log(greet('ShokaX'))
+console.log(greet("ShokaX"));
 function greet(name: string): string {
-  return `Hello, ${name}!`
+  return `Hello, ${name}!`;
 }
 
-console.log(greet('ShokaX'))
+console.log(greet("ShokaX"));
 function greet(name: string): string {
-  return `Hello, ${name}!`
+  return `Hello, ${name}!`;
 }
 
-console.log(greet('ShokaX'))
+console.log(greet("ShokaX"));
 function greet(name: string): string {
-  return `Hello, ${name}!`
+  return `Hello, ${name}!`;
 }
 
-console.log(greet('ShokaX'))
+console.log(greet("ShokaX"));
 function greet(name: string): string {
-  return `Hello, ${name}!`
+  return `Hello, ${name}!`;
 }
 
-console.log(greet('ShokaX'))
+console.log(greet("ShokaX"));
 function greet(name: string): string {
-  return `Hello, ${name}!`
+  return `Hello, ${name}!`;
 }
 
-console.log(greet('ShokaX'))
+console.log(greet("ShokaX"));
 function greet(name: string): string {
-  return `Hello, ${name}!`
+  return `Hello, ${name}!`;
 }
 
-console.log(greet('ShokaX'))
+console.log(greet("ShokaX"));
 ```
 
 ## 列表示例

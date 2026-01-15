@@ -41,6 +41,7 @@
 - **Config helper** (`themeConfig.ts`): `defineConfig` function for type-safe theme configuration, `ShokaXThemeConfig` interface.
 
 ## Critical Gotchas
+
 - **Date handling**: Content schema enforces Date objects with zod refine—parse ISO strings before passing to collection entries.
 - **Icon safelisting**: Update `theme.config.ts` nav/sidebar configs → `uno.config.ts` auto-extracts icons → prevents UnoCSS purging.
 - **SSR-safe code**: Always guard browser APIs (`window`, `document`, `localStorage`) with `onMount` or typeof checks—Astro SSR will error otherwise.

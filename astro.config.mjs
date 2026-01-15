@@ -1,12 +1,10 @@
 import svelte from "@astrojs/svelte";
 import { defineConfig } from "astro/config";
-import sitemap from '@astrojs/sitemap';
+import sitemap from "@astrojs/sitemap";
 import esToolkitPlugin from "vite-plugin-es-toolkit";
-import transformerDirectives from "@unocss/transformer-directives";
 import { transformerColorizedBrackets } from "@shikijs/colorized-brackets";
 
 import UnoCSS from "unocss/astro";
-import unocssInline from "unocss-inline";
 
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
@@ -35,7 +33,7 @@ export default defineConfig({
 
   integrations: [
     UnoCSS({
-      injectReset: true
+      injectReset: true,
     }),
     svelte({
       compilerOptions: {
@@ -43,7 +41,6 @@ export default defineConfig({
       },
     }),
     sitemap(),
-    
   ],
 
   vite: {

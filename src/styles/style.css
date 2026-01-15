@@ -185,3 +185,7 @@ main > .inner {
 #player {
   /* Placeholder for player */
 }
+
+.body.md {
+  text-autospace: normal;
+}
