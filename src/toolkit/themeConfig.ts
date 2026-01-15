@@ -16,6 +16,19 @@ interface CoverConfig {
   enableCover?: boolean;
   // 是否启用预加载
   enablePreload?: boolean;
+  /**
+   * 是否启用固定封面。
+   * - true：优先使用 fixedCover
+   * - false：忽略 fixedCover
+   * - undefined：兼容旧配置（当 fixedCover 有值时视为启用）
+   */
+  enableFixedCover?: boolean;
+
+  /**
+   * 固定封面配置：
+   * - 推荐填 Images.astro 的预设 key："cover-1" ~ "cover-6"（会走 Astro 静态导入与 <Image />）
+   * - 也可填 public 路径或远程 URL（会使用 <img> 兜底渲染）
+   */
   fixedCover?: string;
   gradient?: boolean;
   enableNextGradientCover?: boolean;

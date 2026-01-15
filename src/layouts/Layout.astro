@@ -25,7 +25,7 @@ import "@/styles/spoiler.css";
 import "@/components/footer/footer.css";
 
 import Loading from "@/components/Loading.astro";
-import { covers } from "@/components/Images.astro";
+import { covers, resolveFixedCover } from "@/components/Images.astro";
 
 // Accept sidebar props from child pages
 interface PostMeta {
@@ -61,6 +61,14 @@ const brandConfig = themeConfig.brand || {};
 const coverConfig = themeConfig.cover || {};
 const footerConfig = themeConfig.footer || {};
 const widgetsConfig = themeConfig.widgets || {};
+
+// fixedCover：通过 Images.astro 统一解析（静态导入走 <Image />，字符串走 <img> 兜底）
+// 兼容旧配置：如果用户只配置了 fixedCover 但未配置 enableFixedCover，则默认视为启用。
+const fixedCoverEnabled =
+  coverConfig.enableFixedCover ?? Boolean(coverConfig.fixedCover);
+const fixedCover = fixedCoverEnabled
+  ? resolveFixedCover(coverConfig.fixedCover)
+  : undefined;
 
 // Get all posts for widgets
 const allPosts = await getCollection("posts");
@@ -110,7 +118,7 @@ import SearchPage from "@/components/search/SearchPage.svelte";
       <HeaderCover
         enableCover={coverConfig.enableCover}
         enablePreload={coverConfig.enablePreload}
-        fixedCover={coverConfig.fixedCover}
+        fixedCover={fixedCover}
         gradient={coverConfig.gradient}
         covers={covers}
         title={brandConfig.title}

@@ -22,6 +22,29 @@ import avatarImg from "@/assets/avatar.avif";
 
 export const covers = [cover1, cover2, cover3, cover4, cover5, cover6];
 
+// 统一的封面预设表：用于 fixedCover（固定封面）等需要从配置字符串解析成 ImageMetadata 的场景
+// 说明：Astro 的 <Image /> 更适合接收 ImageMetadata（静态导入结果），而不是任意字符串。
+export const coverPresets: Record<string, ImageMetadata> = {
+  "cover-1": cover1,
+  "cover-2": cover2,
+  "cover-3": cover3,
+  "cover-4": cover4,
+  "cover-5": cover5,
+  "cover-6": cover6,
+};
+
+/**
+ * 将 theme.config.ts 中的 fixedCover 字符串解析为可渲染的图片源。
+ * - 如果是预设 key（如 "cover-1"），返回静态导入的 ImageMetadata（走 Astro 资源管线）。
+ * - 否则原样返回字符串（例如 public 路径或远程 URL），由渲染侧使用 <img> 兜底。
+ */
+export function resolveFixedCover(
+  fixedCover?: string,
+): ImageMetadata | string | undefined {
+  if (!fixedCover) return undefined;
+  return coverPresets[fixedCover] ?? fixedCover;
+}
+
 export function getPostCover(post: Partial<Post>): ImageMetadata {
   if (post?.data?.cover) {
     return post.data.cover;

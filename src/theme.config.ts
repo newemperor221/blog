@@ -42,7 +42,12 @@ export default defineConfig({
   cover: {
     enableCover: true,
     enablePreload: true,
-    // fixedCover: '/path/to/cover.jpg', // 固定封面模式
+    // 固定封面模式（可选）：
+    // - enableFixedCover: 是否启用固定封面
+    // - fixedCover: 推荐填 "cover-1" ~ "cover-6"（来自 src/components/Images.astro 预设），
+    //              或者填 public 路径/远程 URL（会使用 <img> 兜底渲染）
+    enableFixedCover: false,
+    // fixedCover: "cover-1",
     // gradient: true, // 渐变模式
     enableNextGradientCover: false, // 文章导航使用渐变背景
   },
