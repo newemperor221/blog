@@ -189,6 +189,15 @@
   line-height: 0.75rem;
 }
 
+#copyright li.noreprint .noreprint-text {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+#copyright li.noreprint .icon {
+  color: var(--primary-color);
+}
+
 /* Reward */
 .reward {
   margin: 1.25rem auto;

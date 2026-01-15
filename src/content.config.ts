@@ -20,6 +20,17 @@ const posts = defineCollection({
       cover: image().optional(),
       sticky: z.boolean().optional(),
       link: z.string().optional(),
+      license: z
+        .enum([
+          "CC-BY-4.0",
+          "CC-BY-SA-4.0",
+          "CC-BY-ND-4.0",
+          "CC-BY-NC-4.0",
+          "CC-BY-NC-SA-4.0",
+          "CC-BY-NC-ND-4.0",
+          "NOREPRINT",
+        ])
+        .optional(),
     }),
 });
 

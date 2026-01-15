@@ -20,7 +20,18 @@
     "publishedAt": "Published on",
     "createdAt": "Created at",
     "previousPost": "Previous Post",
-    "nextPost": "Next Post"
+    "nextPost": "Next Post",
+    "license": {
+      "text": "This article is licensed under",
+      "suffix": "license. Please indicate the source for reprints",
+      "noreprint": "All rights reserved. Reprinting is prohibited",
+      "CC-BY-4.0": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+      "CC-BY-SA-4.0": "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)",
+      "CC-BY-ND-4.0": "Creative Commons Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)",
+      "CC-BY-NC-4.0": "Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)",
+      "CC-BY-NC-SA-4.0": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)",
+      "CC-BY-NC-ND-4.0": "Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)"
+    }
   },
   "category": {
     "title": "Categories",

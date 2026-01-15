@@ -88,4 +88,8 @@ export default defineConfig({
     selectedCategories: [{ name: "Tutorial" }, { name: "Frontend" }],
     pageSize: 5,
   },
+  copyright: {
+    license: "CC-BY-NC-SA-4.0",
+    show: true,
+  },
 });

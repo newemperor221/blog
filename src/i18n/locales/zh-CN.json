@@ -20,7 +20,18 @@
     "publishedAt": "发布于",
     "createdAt": "创建于",
     "previousPost": "上一篇",
-    "nextPost": "下一篇"
+    "nextPost": "下一篇",
+    "license": {
+      "text": "本文采用",
+      "suffix": "许可协议，转载请注明出处",
+      "noreprint": "本文禁止任何形式的转载",
+      "CC-BY-4.0": "署名 4.0 国际 (CC BY 4.0)",
+      "CC-BY-SA-4.0": "署名-相同方式共享 4.0 国际 (CC BY-SA 4.0)",
+      "CC-BY-ND-4.0": "署名-禁止演绎 4.0 国际 (CC BY-ND 4.0)",
+      "CC-BY-NC-4.0": "署名-非商业性使用 4.0 国际 (CC BY-NC 4.0)",
+      "CC-BY-NC-SA-4.0": "署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)",
+      "CC-BY-NC-ND-4.0": "署名-非商业性使用-禁止演绎 4.0 国际 (CC BY-NC-ND 4.0)"
+    }
   },
   "category": {
     "title": "分类",

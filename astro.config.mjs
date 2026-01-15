@@ -51,7 +51,7 @@ export default defineConfig({
     },
     plugins: [
       Font.vite({
-        scanFiles: ["src/**/*.{svelte,ts,tsx,js,jsx,md}"],
+        scanFiles: ["src/**/*.{svelte,ts,tsx,js,jsx,md,json}"],
       }),
       esToolkitPlugin(),
     ],

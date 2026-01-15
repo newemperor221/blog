@@ -53,6 +53,27 @@ interface HomeConfig {
   pageSize?: number;
 }
 
+/**
+ * 协议类型
+ * CC 4.0 系列：BY, BY-SA, BY-ND, BY-NC, BY-NC-SA, BY-NC-ND
+ * 禁止转载：NOREPRINT
+ */
+export type LicenseType =
+  | "CC-BY-4.0"
+  | "CC-BY-SA-4.0"
+  | "CC-BY-ND-4.0"
+  | "CC-BY-NC-4.0"
+  | "CC-BY-NC-SA-4.0"
+  | "CC-BY-NC-ND-4.0"
+  | "NOREPRINT";
+
+interface CopyrightConfig {
+  /** 全站默认协议类型 */
+  license?: LicenseType;
+  /** 是否显示版权声明 */
+  show?: boolean;
+}
+
 export interface ShokaXThemeConfig {
   siteName: string;
   locale?: Locale; // 网站语言设置，默认为 zh-CN
@@ -63,6 +84,7 @@ export interface ShokaXThemeConfig {
   footer?: FooterConfig;
   widgets?: WidgetsConfig;
   home?: HomeConfig;
+  copyright?: CopyrightConfig;
 }
 
 export function defineConfig(config: ShokaXThemeConfig) {
