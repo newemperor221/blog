@@ -1,3 +1,5 @@
+import type { injectPoint } from "./config";
+
 /**
  * 对于一个插件而言，其渲染类型只能是以下三种之一
  * - runtime-only: 仅运行时渲染，入口点只能包括一个或多个 js/ts 文件，不能包含任何模板文件
@@ -29,10 +31,15 @@ export interface PluginManifestBase {
   maxRenderCapability: pluginRenderType;
 }
 
-export interface RuntimeOnlyEntry {
-  type: "runtime-only";
-  name: string;
+export interface InjectEntry {
+  injectPoint: injectPoint | (string & {});
+  type: "runtime-only" | "custom-element" | "ssr";
   path: string;
+  name: string;
+}
+
+export interface RuntimeOnlyEntry extends InjectEntry {
+  type: "runtime-only";
 }
 
 export interface RuntimeOnlyPluginManifest extends PluginManifestBase {
@@ -44,10 +51,9 @@ export interface RuntimeOnlyPluginManifest extends PluginManifestBase {
  * 基于 Web Components 的插件入口点
  * 入口点将会在 Layout 内放置一个隐藏的 Astro 组件，以确保其在页面加载时进行 SSR 水合
  */
-export interface CustomElementEntry {
+export interface CustomElementEntry extends InjectEntry {
   type: "custom-element";
-  path: string;
-  name: string;
+  injectPoint: "layout";
 }
 
 export interface CustomElementPluginManifest extends PluginManifestBase {
@@ -56,12 +62,16 @@ export interface CustomElementPluginManifest extends PluginManifestBase {
   entry: Array<CustomElementEntry | RuntimeOnlyEntry>;
 }
 
-export interface SSREntry {
+export interface SSREntry extends InjectEntry {
   type: "ssr";
   platform: pluginPlatformType;
-  name: string;
-  path: string;
+  injectPoint: string;
   clientHydrationInstruction?: "load" | "idle" | "visible" | "media";
+  /**
+   * 传递给 SSR 组件的 props
+   * 注意：props 值必须是可序列化的，避免传递函数、Symbol 等不可序列化的值
+   */
+  props?: Record<string, unknown>;
 }
 
 export interface SSRPluginManifest extends PluginManifestBase {
@@ -74,4 +84,3 @@ export type PluginManifest =
   | RuntimeOnlyPluginManifest
   | CustomElementPluginManifest
   | SSRPluginManifest;
-

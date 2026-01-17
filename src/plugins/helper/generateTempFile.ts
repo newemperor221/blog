@@ -36,6 +36,51 @@ function safeHydrationInstruction(
   return undefined;
 }
 
+/**
+ * 将 props 对象序列化为 Astro 组件属性字符串
+ * 例如: { title: "Hello", count: 42 } => ' title="Hello" count={42}'
+ */
+function serializeProps(props: Record<string, unknown>): string {
+  const entries = Object.entries(props);
+  if (entries.length === 0) return "";
+
+  return entries
+    .map(([key, value]) => {
+      // 校验 key 是否是安全的属性名
+      if (!/^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(key)) {
+        console.warn(`[hyacine] Warning: Invalid prop name "${key}" detected. Skipping this prop.`);
+        return "";
+      }
+
+      // 根据值的类型决定如何序列化
+      if (typeof value === "string") {
+        // 字符串值用双引号包裹，需要转义内部的引号和反斜杠
+        const escaped = value.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+        return ` ${key}="${escaped}"`;
+      } else if (typeof value === "number" || typeof value === "boolean") {
+        // 数字和布尔值使用 JSX 表达式语法
+        return ` ${key}={${value}}`;
+      } else if (value === null || value === undefined) {
+        // null 和 undefined 跳过
+        return "";
+      } else {
+        // 对象、数组等复杂类型使用 JSON 序列化后作为 JSX 表达式
+        try {
+          const serialized = JSON.stringify(value);
+          return ` ${key}={${serialized}}`;
+        } catch (error) {
+          const errorMessage = error instanceof Error ? error.message : String(error);
+          console.warn(
+            `[hyacine] Warning: Failed to serialize prop "${key}": ${errorMessage}. Skipping this prop.`,
+          );
+          return "";
+        }
+      }
+    })
+    .filter((s) => s !== "")
+    .join("");
+}
+
 export function generateTempAstroTemplateFile(entries: (SSREntry | CustomElementEntry)[]): string {
   let importsArea = "";
 
@@ -60,7 +105,8 @@ export function generateTempAstroTemplateFile(entries: (SSREntry | CustomElement
     } else if (entry.type === "ssr") {
       const hydration = safeHydrationInstruction(entry.clientHydrationInstruction);
       const hydrationAttr = hydration ? ` client:${hydration}` : "";
-      usageArea += `<${componentName}${hydrationAttr} />\n`;
+      const propsAttr = entry.props ? serializeProps(entry.props) : "";
+      usageArea += `<${componentName}${hydrationAttr}${propsAttr} />\n`;
     }
   });
 
