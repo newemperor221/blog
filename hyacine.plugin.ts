@@ -19,12 +19,5 @@ export default defineConfig({
     "post-footer": ".post footer",
   },
 
-  plugins: [
-    // {
-    //   plugin: SiteupTime,
-    //   options: {
-    //     siteCreatedAt: "2024-01-01T00:00:00Z",
-    //   },
-    // },
-  ],
+  plugins: [],
 });

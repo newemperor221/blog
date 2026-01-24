@@ -53,7 +53,7 @@ export default defineConfig({
       },
     }),
     sitemap(),
-    hyacinePlugin()
+    hyacinePlugin(),
   ],
 
   vite: {
