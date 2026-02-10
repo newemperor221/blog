@@ -26,6 +26,7 @@ import "@/components/footer/footer.css";
 
 import Loading from "@/components/Loading.astro";
 import { covers, resolveFixedCover } from "@/components/Images.astro";
+import FloatingToolbar from "@/components/FloatingToolbar.svelte";
 
 // Accept sidebar props from child pages
 interface PostMeta {
@@ -192,6 +193,7 @@ import SearchPage from "@/components/search/SearchPage.svelte";
     <div class="hidden">
       <CodeBlock client:idle />
     </div>
+    <FloatingToolbar client:idle />
   </body>
 </html>
 
