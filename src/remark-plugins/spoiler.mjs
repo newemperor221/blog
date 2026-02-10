@@ -2,7 +2,7 @@ import { visit } from "unist-util-visit";
 
 /**
  * spoiler（Aether 兼容）：
- * 支持行内语法：!!spoiler!! -> <span class="spoiler" title="...">spoiler</span>
+ * 支持行内语法：!!spoiler!! -> <Spoiler title="...">spoiler</Spoiler>
  *
  * 说明：
  * - 只处理普通 text 节点，避免破坏 code/inlineCode/math 等节点。
@@ -49,15 +49,16 @@ export default function spoiler(options = {}) {
           parts.push({ type: "text", value: "!!!!" });
         } else {
           parts.push({
-            type: "spoiler",
-            children: [{ type: "text", value: content }],
-            data: {
-              hName: "span",
-              hProperties: {
-                className: ["spoiler"],
-                title: title,
+            type: "mdxJsxTextElement",
+            name: "Spoiler",
+            attributes: [
+              {
+                type: "mdxJsxAttribute",
+                name: "title",
+                value: title,
               },
-            },
+            ],
+            children: [{ type: "text", value: content }],
           });
         }
 

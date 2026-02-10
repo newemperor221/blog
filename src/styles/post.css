@@ -686,48 +686,6 @@
    Special Formatting
    ============================================ */
 
-/* Keyboard */
-.md .kbd,
-.md kbd {
-  background-color: var(--grey-1);
-  background-image: linear-gradient(var(--grey-2), var(--grey-0), var(--grey-2));
-  border: 0.0625rem solid var(--grey-4);
-  border-radius: 0.2rem;
-  box-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.1);
-  font-family: inherit;
-  padding: 0.1rem 0.3rem;
-  white-space: nowrap;
-}
-
-/* Mark */
-.md mark {
-  background-color: #dbfdad;
-}
-
-/* Insert/Underline */
-.md ins {
-  --line-color: var(--primary-color);
-  text-decoration: none;
-  border-bottom: 0.125rem solid var(--line-color);
-}
-
-.md ins.wavy {
-  text-decoration-style: wavy;
-  text-decoration-line: underline;
-  text-decoration-color: var(--line-color);
-  border-bottom: none;
-}
-
-.md ins.dot {
-  border-bottom: 0.2rem dotted var(--line-color);
-}
-
-/* Strikethrough */
-.md s {
-  color: var(--grey-5);
-  text-decoration-color: var(--grey-5);
-}
-
 /* Ruby */
 .md ruby {
   padding: 0 0.3125rem;
@@ -739,60 +697,10 @@
   overflow-y: hidden;
 }
 
-/* Spoiler */
-.md .spoiler:not(.bulr) {
-  background-color: var(--text-color);
-  color: var(--text-color);
-  text-shadow: none;
-  transition: color 0.3s;
-  padding: 0 0.1875rem;
-}
-
-.md .spoiler:not(.bulr):hover {
-  color: #fff;
-}
-
-.md .bulr {
-  text-shadow: rgba(0, 0, 0, 0.7) 0 0 0.625rem;
-  color: transparent;
-}
-
-/* Rainbow */
-@keyframes rainbow {
-  to {
-    background-position: -2000vw;
-  }
-}
-
-.md .rainbow {
-  background-image: linear-gradient(
-    to left,
-    orangered,
-    orange,
-    gold,
-    lightgreen,
-    cyan,
-    dodgerblue,
-    mediumpurple,
-    hotpink,
-    orangered
-  );
-  background-size: 110vw;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  animation: rainbow 60s linear infinite;
-}
-
 /* ============================================
    Note/Details Container Styles
    ============================================ */
 
-.md .note h2,
-.md .note h3,
-.md .note h4,
-.md .note h5,
-.md .note h6,
 .md details h2,
 .md details h3,
 .md details h4,
@@ -804,29 +712,24 @@
   padding-top: 0;
 }
 
-.md .note p,
 .md details p {
   line-height: 1.8;
 }
 
-.md .note a:not(.btn),
 .md details a:not(.btn) {
   color: var(--note-hover);
   border-bottom: 0.0625rem dashed var(--note-text);
 }
 
-.md .note a:not(.btn):hover,
 .md details a:not(.btn):hover {
   color: var(--note-text);
   border-bottom-color: var(--note-text);
 }
 
-.md .note ul li::before,
 .md details ul li::before {
   background: var(--note-text);
 }
 
-.md .note ol li:before,
 .md details ol li:before {
   background: var(--note-text, var(--primary-color)) !important;
   width: 0.8rem;

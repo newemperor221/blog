@@ -24,7 +24,10 @@ import remarkEmoji from "remark-emoji";
 import remarkExtendedTable from "remark-extended-table";
 import remarkBreaks from "remark-breaks";
 
+import AutoImport from "astro-auto-import";
+
 import { hyacinePlugin } from "@hyacine/astro";
+import mdx from "@astrojs/mdx";
 
 import spoiler from "./src/remark-plugins/spoiler.mjs";
 
@@ -54,6 +57,22 @@ export default defineConfig({
     }),
     sitemap(),
     hyacinePlugin(),
+    AutoImport({
+      imports: [
+        "@/components/mdx/Spoiler.astro",
+        "@/components/mdx/Note.astro",
+        "@/components/mdx/Label.astro",
+        "@/components/mdx/Underline.astro",
+        "@/components/mdx/Strike.astro",
+        "@/components/mdx/Highlight.astro",
+        "@/components/mdx/Text.astro",
+        "@/components/mdx/Kbd.astro",
+        "@/components/mdx/Sup.astro",
+        "@/components/mdx/Sub.astro",
+        "@/components/mdx/Collapse.astro",
+      ],
+    }),
+    mdx(),
   ],
 
   vite: {
@@ -64,7 +83,7 @@ export default defineConfig({
     },
     plugins: [
       Font.vite({
-        scanFiles: ["src/**/*.{svelte,ts,tsx,js,jsx,md,json,astro}"],
+        scanFiles: ["src/**/*.{svelte,ts,tsx,js,jsx,md,mdx,json,astro}"],
       }),
       esToolkitPlugin(),
     ],
