@@ -1,7 +1,5 @@
 # Astro Blog ShokaX
 
-**正在开发中，不保证配置与 API 稳定性，不建议用于生产**
-
 这是 [Hexo Theme ShokaX](https://github.com/theme-shoka-x/hexo-theme-shokaX) 在 Astro 上的重构版本，使用 Astro + Svelte 5 + UnoCSS 技术栈
 
 本项目建议使用 [Bun](https://bun.sh/) 运行，不保证与 Nodejs 的兼容性
@@ -18,6 +16,8 @@ bun run dev
 # 构建生产版本
 bun run build
 ```
+
+查看完整文档：[ShokaX Astro 文档](https://docs.astro.kaitaku.xyz/guides/getting-started/)
 
 本仓库自带`vercel.json`和`netlify.toml`以提供在对应平台上的安全性与缓存优化，您可以直接将本仓库部署到相关平台上
 
