@@ -106,5 +106,9 @@
     "total": "Total",
     "home": "Home",
     "in": "in"
+  },
+  "search": {
+    "devModeSkipped": "Development mode is active, so Pagefind loading has been skipped.",
+    "buildHint": "Please run a production build (with index generation) before previewing on-site search."
   }
 }

@@ -1,8 +1,9 @@
 <script lang="ts">
   import { onMount, onDestroy } from "svelte";
-  // @ts-expect-error no types for PagefindUI
-  import { PagefindUI } from "@pagefind/default-ui";
-  import "@pagefind/default-ui/css/ui.css";
+  import { getT } from "@/i18n";
+  import themeConfig from "@/theme.config";
+
+  const isDev = import.meta.env.DEV;
 
   interface Props {
     selector?: string | HTMLElement;
@@ -10,6 +11,7 @@
   }
 
   let { selector = undefined, showSearch = $bindable(false) }: Props = $props();
+  const t = getT((themeConfig.locale as "zh-CN" | "en") || "zh-CN");
 
   let visible = $state(false);
   let isDark = $state(false);
@@ -24,9 +26,23 @@
     isDark = document.documentElement.getAttribute("data-theme") === "dark";
   }
 
+  async function initPagefind() {
+    if (isDev) return;
+
+    try {
+      const [{ PagefindUI }] = await Promise.all([
+        // @ts-expect-error no types for PagefindUI
+        import("@pagefind/default-ui"),
+        import("@pagefind/default-ui/css/ui.css"),
+      ]);
+      new PagefindUI({ element: "#pagefind", showSubResults: true });
+    } catch (error) {
+      console.warn("Pagefind 初始化失败：", error);
+    }
+  }
+
   onMount(() => {
-    // Initialize PagefindUI
-    new PagefindUI({ element: "#pagefind", showSubResults: true });
+    initPagefind();
 
     // Setup dark mode observer
     updateDarkMode();
@@ -84,7 +100,14 @@
   class:dark={isDark}
   class:pagefind-hidden={!visible}
 >
-  <div id="pagefind"></div>
+  {#if isDev}
+    <div class="dev-tip p-6 text-center">
+      {t("search.devModeSkipped")}<br />
+      {t("search.buildHint")}
+    </div>
+  {:else}
+    <div id="pagefind"></div>
+  {/if}
   <div
     class="i-ri-close-line absolute bottom-4 right-4 cursor-pointer text-8"
     onclick={() => (visible = false)}
@@ -118,6 +141,11 @@
     transition:
       opacity 0.5s ease,
       transform 0.5s ease;
+  }
+
+  .dev-tip {
+    color: var(--grey-9);
+    line-height: 1.75;
   }
 
   @keyframes slide-down-enter {
