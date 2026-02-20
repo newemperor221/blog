@@ -216,6 +216,27 @@ interface CommentsConfig {
   waline?: WalineClientConfig;
 }
 
+interface NyxPlayerPlaylist {
+  /** 歌单名称 */
+  name: string;
+  /** 歌单链接（网易云 / QQ 音乐） */
+  url: string;
+}
+
+interface NyxPlayerConfig {
+  /** 是否启用播放器 */
+  enable?: boolean;
+
+  /** 歌单配置 */
+  urls?: NyxPlayerPlaylist[];
+
+  /** 预设主题 */
+  preset?: "nyx" | "shokax";
+
+  /** 暗色模式选择器 */
+  darkModeTarget?: string;
+}
+
 interface HomeConfig {
   /**
    * 首页精选分类。
@@ -362,6 +383,11 @@ export interface ShokaXThemeConfig {
    * - 当前用于 Waline 评论系统
    */
   comments?: CommentsConfig;
+
+  /**
+   * nyx-player 音乐播放器配置。
+   */
+  nyxPlayer?: NyxPlayerConfig;
 
   /**
    * 版权配置。

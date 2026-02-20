@@ -36,6 +36,7 @@
     "i18next": "^25.8.4",
     "katex": "^0.16.28",
     "mouse-firework": "^0.2.0",
+    "nyx-player": "^0.1.1",
     "pagefind": "^1.4.0",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-katex": "^7.0.1",

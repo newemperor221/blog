@@ -1,6 +1,13 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { sidebarOpen, toggleSidebar } from "@/stores/sidebarStore";
+  import type { ShokaXThemeConfig } from "@/toolkit/themeConfig";
+
+  interface Props {
+    nyxPlayer?: ShokaXThemeConfig["nyxPlayer"];
+  }
+
+  let { nyxPlayer }: Props = $props();
 
   let scrollPercent = $state(0);
   let hasComments = $state(false);
@@ -8,6 +15,9 @@
   let isVisible = $state(true);
 
   const percentLabel = $derived(`${Math.round(scrollPercent)}%`);
+  const nyxEnabled = $derived(
+    Boolean(nyxPlayer?.enable && nyxPlayer.urls && nyxPlayer.urls.length > 0),
+  );
 
   const updateScrollPercent = () => {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -51,6 +61,41 @@
     toggleSidebar();
   };
 
+  const initializeNyxPlayer = async () => {
+    if (
+      typeof window === "undefined" ||
+      typeof document === "undefined" ||
+      !nyxEnabled
+    ) {
+      return;
+    }
+
+    const player = document.getElementById("player");
+    const showBtn = document.getElementById("nyx-show-btn");
+
+    if (!player || !showBtn) {
+      return;
+    }
+
+    if (player.dataset.nyxInited === "true") {
+      return;
+    }
+
+    await import("nyx-player/style");
+    const { initPlayer } = await import("nyx-player");
+
+    initPlayer(
+      "#player",
+      "#nyx-show-btn",
+      nyxPlayer?.urls || [],
+      "#nyx-play-btn",
+      nyxPlayer?.darkModeTarget || ':root[data-theme="dark"]',
+      nyxPlayer?.preset || "shokax",
+    );
+
+    player.dataset.nyxInited = "true";
+  };
+
   onMount(() => {
     if (typeof window === "undefined" || typeof document === "undefined")
       return;
@@ -58,6 +103,7 @@
     updateScrollPercent();
     updateHasComments();
     updateIsMobile();
+    void initializeNyxPlayer();
 
     let lastScrollY = window.scrollY;
     let idleTimer: ReturnType<typeof setTimeout> | null = null;
@@ -136,6 +182,18 @@
       </button>
     </li>
   {/if}
+  {#if nyxEnabled}
+    <li class="tool">
+      <button id="nyx-show-btn" type="button" aria-label="显示或隐藏播放器">
+        <i class="i-ri-music-2-line"></i>
+      </button>
+    </li>
+    <li class="tool">
+      <button id="nyx-play-btn" type="button" aria-label="播放或暂停">
+        <i class="i-ri-play-circle-line"></i>
+      </button>
+    </li>
+  {/if}
   <li class="tool mobile-only">
     <button
       type="button"
@@ -148,6 +206,10 @@
     </button>
   </li>
 </ul>
+
+{#if nyxEnabled}
+  <div id="player"></div>
+{/if}
 
 <style>
   .floating-toolbar {

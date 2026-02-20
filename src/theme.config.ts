@@ -110,6 +110,17 @@ export default defineConfig({
       // dark: "auto",
     },
   },
+  nyxPlayer: {
+    enable: false,
+    preset: "shokax",
+    darkModeTarget: ':root[data-theme="dark"]',
+    urls: [
+      {
+        name: "默认歌单",
+        url: "https://music.163.com/#/playlist?id=2943811283",
+      },
+    ],
+  },
   home: {
     selectedCategories: [{ name: "Tutorial" }, { name: "Frontend" }],
     pageSize: 5,
