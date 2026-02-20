@@ -2,6 +2,7 @@
   import { onMount, onDestroy } from "svelte";
   import { getT } from "@/i18n";
   import themeConfig from "@/theme.config";
+  import pagefindCssHref from "@pagefind/default-ui/css/ui.css?url";
 
   const isDev = import.meta.env.DEV;
 
@@ -26,6 +27,35 @@
     isDark = document.documentElement.getAttribute("data-theme") === "dark";
   }
 
+  function loadPagefindCssAfterOnload() {
+    return new Promise<void>((resolve) => {
+      const existing = document.querySelector<HTMLLinkElement>(
+        'link[data-pagefind-ui="true"]',
+      );
+      if (existing) {
+        resolve();
+        return;
+      }
+
+      const appendCss = () => {
+        const link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.href = pagefindCssHref;
+        link.dataset.pagefindUi = "true";
+        link.onload = () => resolve();
+        link.onerror = () => resolve();
+        document.head.appendChild(link);
+      };
+
+      if (document.readyState === "complete") {
+        appendCss();
+        return;
+      }
+
+      window.addEventListener("load", appendCss, { once: true });
+    });
+  }
+
   async function initPagefind() {
     if (isDev) return;
 
@@ -33,7 +63,7 @@
       const [{ PagefindUI }] = await Promise.all([
         // @ts-expect-error no types for PagefindUI
         import("@pagefind/default-ui"),
-        import("@pagefind/default-ui/css/ui.css"),
+        loadPagefindCssAfterOnload(),
       ]);
       new PagefindUI({ element: "#pagefind", showSubResults: true });
     } catch (error) {

@@ -33,6 +33,8 @@ import spoiler from "./src/remark-plugins/spoiler.mjs";
 
 import Font from "vite-plugin-font";
 
+import process from "process";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://preview.astro.kaitaku.xyz",
@@ -49,6 +51,8 @@ export default defineConfig({
   integrations: [
     UnoCSS({
       injectReset: true,
+      mode: "dist-chunk",
+      injectEntry: process.env["NODE_ENV"] === "development",
     }),
     svelte({
       compilerOptions: {

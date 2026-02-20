@@ -97,7 +97,7 @@ export default defineConfig({
   widgets: {
     randomPosts: true,
     recentComments: true,
-    recentCommentsLimit: 6,
+    recentCommentsLimit: 10,
   },
   comments: {
     enable: false,

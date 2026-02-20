@@ -182,10 +182,6 @@ main > .inner {
   display: none;
 }
 
-#player {
-  /* Placeholder for player */
-}
-
 .body.md {
   text-autospace: normal;
 }

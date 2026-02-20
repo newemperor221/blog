@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { RecentComments } from "@waline/client";
   import { shuffle } from "es-toolkit";
   import { onMount } from "svelte";
   import { t } from "@/i18n";
@@ -124,6 +123,7 @@
     // Fetch recent comments from Waline
     if (enableRecentComments && hasWaline) {
       const loadRecentComments = async () => {
+        const { RecentComments } = await import("@waline/client");
         try {
           const result = await RecentComments({
             serverURL: walineServerURL,
