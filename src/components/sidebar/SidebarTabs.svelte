@@ -15,7 +15,9 @@
 </script>
 
 {#if panels.length > 1}
-  <ul class="tab absolute inline-flex pt-[30px] pb-2.5 px-0 m-0 min-h-[30px] list-none">
+  <ul
+    class="tab absolute inline-flex pt-[30px] pb-2.5 px-0 m-0 min-h-[30px] list-none"
+  >
     {#each panels as panel, i (panel.id)}
       {@const iconClass =
         panel.id === "contents"

@@ -13,15 +13,28 @@
 {#if author || avatarImage}
   <div class="author" itemscope itemtype="http://schema.org/Person">
     {#if avatarImage}
-      <div class="image border border-[var(--body-bg-shadow)] block mx-auto max-w-40 p-0.5 shadow-[0_0_1rem_0.625rem_var(--body-bg-shadow)] rounded-full transition-transform duration-300 overflow-hidden" itemprop="image">
+      <div
+        class="image border border-[var(--body-bg-shadow)] block mx-auto max-w-40 p-0.5 shadow-[0_0_1rem_0.625rem_var(--body-bg-shadow)] rounded-full transition-transform duration-300 overflow-hidden"
+        itemprop="image"
+      >
         {@render avatarImage()}
       </div>
     {/if}
     {#if author}
-      <p class="text-[var(--grey-7)] font-normal m-0 mt-[5px] text-center" itemprop="name">{author}</p>
+      <p
+        class="text-[var(--grey-7)] font-normal m-0 mt-[5px] text-center"
+        itemprop="name"
+      >
+        {author}
+      </p>
     {/if}
     {#if description}
-      <div class="text-[var(--grey-5)] text-sm mt-[5px] text-center" itemprop="description">{description}</div>
+      <div
+        class="text-[var(--grey-5)] text-sm mt-[5px] text-center"
+        itemprop="description"
+      >
+        {description}
+      </div>
     {/if}
   </div>
 {/if}

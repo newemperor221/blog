@@ -15,28 +15,48 @@
 </script>
 
 {#if state && (state.posts || state.categories || state.tags)}
-  <nav class="state flex justify-center leading-[1.4] mt-2.5 overflow-hidden text-center whitespace-nowrap">
+  <nav
+    class="state flex justify-center leading-[1.4] mt-2.5 overflow-hidden text-center whitespace-nowrap"
+  >
     {#if state.posts && state.posts > 0}
       <div class="item px-[15px]">
-        <a href="/archives/" class="no-underline [border-bottom:none] text-inherit">
-          <span class="block text-lg font-semibold text-center">{state.posts}</span>
-          <span class="text-[0.8125rem] text-inherit">{t("sidebar.state.posts")}</span>
+        <a
+          href="/archives/"
+          class="no-underline [border-bottom:none] text-inherit"
+        >
+          <span class="block text-lg font-semibold text-center"
+            >{state.posts}</span
+          >
+          <span class="text-[0.8125rem] text-inherit"
+            >{t("sidebar.state.posts")}</span
+          >
         </a>
       </div>
     {/if}
     {#if state.categories && state.categories > 0}
       <div class="item px-[15px]">
-        <a href="/categories/" class="no-underline [border-bottom:none] text-inherit">
-          <span class="block text-lg font-semibold text-center">{state.categories}</span>
-          <span class="text-[0.8125rem] text-inherit">{t("sidebar.state.categories")}</span>
+        <a
+          href="/categories/"
+          class="no-underline [border-bottom:none] text-inherit"
+        >
+          <span class="block text-lg font-semibold text-center"
+            >{state.categories}</span
+          >
+          <span class="text-[0.8125rem] text-inherit"
+            >{t("sidebar.state.categories")}</span
+          >
         </a>
       </div>
     {/if}
     {#if state.tags && state.tags > 0}
       <div class="item px-[15px]">
         <a href="/tags/" class="no-underline [border-bottom:none] text-inherit">
-          <span class="block text-lg font-semibold text-center">{state.tags}</span>
-          <span class="text-[0.8125rem] text-inherit">{t("sidebar.state.tags")}</span>
+          <span class="block text-lg font-semibold text-center"
+            >{state.tags}</span
+          >
+          <span class="text-[0.8125rem] text-inherit"
+            >{t("sidebar.state.tags")}</span
+          >
         </a>
       </div>
     {/if}

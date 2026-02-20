@@ -36,7 +36,9 @@
         <li class="item dropdown">
           <a href={url} rel="section">
             {#if icon}
-              <div class={`ic ${icon} inline-flex justify-center items-center text-xl flex-wrap align-text-bottom mr-2.5`}></div>
+              <div
+                class={`ic ${icon} inline-flex justify-center items-center text-xl flex-wrap align-text-bottom mr-2.5`}
+              ></div>
             {/if}
             {text}
           </a>
@@ -45,7 +47,9 @@
               <li class="item">
                 <a href={subItem.href} rel="section">
                   {#if subItem.icon}
-                    <div class={`ic ${getMenuIcon(subItem)} inline-flex justify-center items-center text-xl flex-wrap align-text-bottom mr-2.5`}></div>
+                    <div
+                      class={`ic ${getMenuIcon(subItem)} inline-flex justify-center items-center text-xl flex-wrap align-text-bottom mr-2.5`}
+                    ></div>
                   {/if}
                   {subItem.text}
                 </a>
@@ -57,7 +61,9 @@
         <li class="item">
           <a href={url} rel="section">
             {#if icon}
-              <div class={`ic ${icon} inline-flex justify-center items-center text-xl flex-wrap align-text-bottom mr-2.5`}></div>
+              <div
+                class={`ic ${icon} inline-flex justify-center items-center text-xl flex-wrap align-text-bottom mr-2.5`}
+              ></div>
             {/if}
             {text}
           </a>

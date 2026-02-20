@@ -16,15 +16,23 @@
   {#if posts.length > 0}
     <ul class="p-0 pr-[2px] pb-[5px] pl-5 text-left list-none m-0">
       {#each posts as post (post.slug)}
-        <li class={`relative leading-[1.8] pb-2.5 ${post.slug === currentSlug ? "active" : ""}`}>
-          <a href={`/posts/${post.slug}/`} title={post.title} class="text-ellipsis whitespace-nowrap overflow-hidden w-full inline-block text-inherit no-underline transition-colors duration-200">
+        <li
+          class={`relative leading-[1.8] pb-2.5 ${post.slug === currentSlug ? "active" : ""}`}
+        >
+          <a
+            href={`/posts/${post.slug}/`}
+            title={post.title}
+            class="text-ellipsis whitespace-nowrap overflow-hidden w-full inline-block text-inherit no-underline transition-colors duration-200"
+          >
             {post.title}
           </a>
         </li>
       {/each}
     </ul>
   {:else}
-    <p class="text-[var(--grey-5)] text-center text-sm">{t("sidebar.related.noContent")}</p>
+    <p class="text-[var(--grey-5)] text-center text-sm">
+      {t("sidebar.related.noContent")}
+    </p>
   {/if}
 </div>
 
