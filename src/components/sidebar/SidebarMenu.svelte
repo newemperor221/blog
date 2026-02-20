@@ -24,8 +24,8 @@
   const menuItems = $derived(renderNavItems(menu || []));
 </script>
 
-<nav class="menu">
-  <ul class="menu-list list-none">
+<nav class="menu p-5 m-0 bg-transparent">
+  <ul class="menu-list list-none m-0 p-0">
     {#each menuItems as item (item.data.href)}
       {@const icon = item.data.icon}
       {@const text = item.data.text}
@@ -36,7 +36,7 @@
         <li class="item dropdown">
           <a href={url} rel="section">
             {#if icon}
-              <div class={`ic ${icon}`}></div>
+              <div class={`ic ${icon} inline-flex justify-center items-center text-xl flex-wrap align-text-bottom mr-2.5`}></div>
             {/if}
             {text}
           </a>
@@ -45,7 +45,7 @@
               <li class="item">
                 <a href={subItem.href} rel="section">
                   {#if subItem.icon}
-                    <div class={`ic ${getMenuIcon(subItem)}`}></div>
+                    <div class={`ic ${getMenuIcon(subItem)} inline-flex justify-center items-center text-xl flex-wrap align-text-bottom mr-2.5`}></div>
                   {/if}
                   {subItem.text}
                 </a>
@@ -57,7 +57,7 @@
         <li class="item">
           <a href={url} rel="section">
             {#if icon}
-              <div class={`ic ${icon}`}></div>
+              <div class={`ic ${icon} inline-flex justify-center items-center text-xl flex-wrap align-text-bottom mr-2.5`}></div>
             {/if}
             {text}
           </a>
@@ -68,27 +68,7 @@
 </nav>
 
 <style>
-  .ic {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.25rem;
-    flex-wrap: wrap;
-    vertical-align: text-bottom;
-  }
-
-  .menu {
-    padding: 1.25rem;
-    margin: 0;
-    background-color: transparent;
-  }
-
-  .menu-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
+  /* 保留状态关联样式，无法用原子类替代 */
   .menu .item {
     border-radius: 0.9375rem;
     margin-bottom: 0.625rem;
@@ -131,10 +111,6 @@
 
   .menu .item:hover .submenu {
     display: block;
-  }
-
-  .menu .item div {
-    margin-right: 0.625rem;
   }
 
   .menu .item.active {

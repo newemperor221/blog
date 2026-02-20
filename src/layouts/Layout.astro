@@ -3,7 +3,7 @@ import NavBar from "@/components/navbar/NavBar.svelte";
 import Brand from "@/components/Brand.astro";
 import SidebarWrapper from "@/components/sidebar/SidebarWrapper.astro";
 import HeaderCover from "@/components/HeaderCover.astro";
-import Waves from "@/components/Waves.svelte";
+import Waves from "@/components/Waves.astro";
 import Footer from "@/components/footer/Footer.astro";
 import Widgets from "@/components/footer/Widgets.svelte";
 import { getCollection } from "astro:content";
@@ -128,7 +128,7 @@ import SearchPage from "@/components/search/SearchPage.svelte";
         pageTitle={indexPage ? "" : pageTitle}
         postMeta={postMeta}
       />
-      <Waves client:load />
+      <Waves />
       <main>
         <div class="inner">
           <div id="main" class="pjax">

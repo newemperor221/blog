@@ -15,8 +15,8 @@
 </script>
 
 {#if panels.length > 1}
-  <ul class="tab">
-    {#each panels as panel (panel.id)}
+  <ul class="tab absolute inline-flex pt-[30px] pb-2.5 px-0 m-0 min-h-[30px] list-none">
+    {#each panels as panel, i (panel.id)}
       {@const iconClass =
         panel.id === "contents"
           ? "i-ri-list-ordered"
@@ -26,7 +26,7 @@
               ? "i-ri-home-2-line"
               : ""}
       <button
-        class={`item ${panel.id} ${activePanel === panel.id ? "active" : ""}`}
+        class={`item ${panel.id} ${activePanel === panel.id ? "active" : ""} ${i === 1 ? "mx-2.5" : ""}`}
         onclick={() => onSelect(panel.id)}
         type="button"
       >
@@ -34,7 +34,7 @@
           <div class={`${iconClass}`}></div>
         {/if}
         {#if activePanel === panel.id}
-          <span>{panel.title}</span>
+          <span class="ml-[5px] break-keep">{panel.title}</span>
         {/if}
       </button>
     {/each}
@@ -42,15 +42,7 @@
 {/if}
 
 <style>
-  .tab {
-    position: absolute;
-    display: inline-flex;
-    padding: 1.875rem 0 0.625rem;
-    margin: 0;
-    min-height: 1.875rem;
-    list-style: none;
-  }
-
+  /* :global 和渐变样式无法原子化，保留 */
   :global(#sidebar.affix) .tab {
     padding-top: 0.625rem;
   }
@@ -69,19 +61,6 @@
     border: none;
     flex-wrap: wrap;
     align-items: center;
-  }
-
-  .tab .item:nth-child(2) {
-    margin: 0 0.625rem;
-  }
-
-  .tab .item i {
-    font-size: 1rem;
-  }
-
-  .tab .item span {
-    margin-left: 0.3125rem;
-    word-break: keep-all;
   }
 
   .tab .item:hover,

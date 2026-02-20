@@ -138,9 +138,9 @@
       }
 
       // Apply affix when scrolled past header and on desktop (width >= 1024px)
-      // 155px 能保证侧边栏过渡效果自然
+      // 260px 能保证侧边栏过渡效果自然
       const shouldAffix =
-        window.scrollY > headerHeight - 155 && window.innerWidth >= 1024;
+        window.scrollY > headerHeight - 260 && window.innerWidth >= 1024;
       isAffix = shouldAffix;
     };
 

@@ -13,32 +13,21 @@
 {#if author || avatarImage}
   <div class="author" itemscope itemtype="http://schema.org/Person">
     {#if avatarImage}
-      <div class="image" itemprop="image">
+      <div class="image border border-[var(--body-bg-shadow)] block mx-auto max-w-40 p-0.5 shadow-[0_0_1rem_0.625rem_var(--body-bg-shadow)] rounded-full transition-transform duration-300 overflow-hidden" itemprop="image">
         {@render avatarImage()}
       </div>
     {/if}
     {#if author}
-      <p class="name" itemprop="name">{author}</p>
+      <p class="text-[var(--grey-7)] font-normal m-0 mt-[5px] text-center" itemprop="name">{author}</p>
     {/if}
     {#if description}
-      <div class="description" itemprop="description">{description}</div>
+      <div class="text-[var(--grey-5)] text-sm mt-[5px] text-center" itemprop="description">{description}</div>
     {/if}
   </div>
 {/if}
 
 <style>
-  .author .image {
-    border: 0.0625rem solid var(--body-bg-shadow);
-    display: block;
-    margin: 0 auto;
-    max-width: 10rem;
-    padding: 0.125rem;
-    box-shadow: 0 0 1rem 0.625rem var(--body-bg-shadow);
-    border-radius: 50%;
-    transition: transform 0.3s ease;
-    overflow: hidden;
-  }
-
+  /* 保留用于 hover 抖动动画 */
   .author .image :global(img) {
     display: block;
     width: 100%;
@@ -72,19 +61,5 @@
     100% {
       transform: scale(1);
     }
-  }
-
-  .author .name {
-    color: var(--grey-7);
-    font-weight: normal;
-    margin: 0.3125rem 0 0;
-    text-align: center;
-  }
-
-  .author .description {
-    color: var(--grey-5);
-    font-size: 0.875rem;
-    margin-top: 0.3125rem;
-    text-align: center;
   }
 </style>

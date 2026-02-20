@@ -419,13 +419,6 @@
     color: var(--grey-5);
   }
 
-  /* Shiki Transformers（@shikijs/transformers）样式化
-   * - transformerNotationHighlight / transformerMetaHighlight: .line.highlighted + pre.has-highlighted
-   * - transformerNotationDiff: .line.diff.add | .line.diff.remove + pre.has-diff
-   * - transformerNotationFocus: .line.focused + pre.has-focused
-   * - transformerNotationErrorLevel: .line.highlighted.error | .line.highlighted.warning
-   */
-
   /* 行高亮（highlight + meta highlight 复用同一个 class） */
   :global(code-block .line.highlighted) {
     background-color: var(--cb-line-highlight-bg);
@@ -476,7 +469,6 @@
     box-shadow: inset 0.25rem 0 0 var(--cb-warning-border);
   }
 
-  /* 额外兜底：word highlight（虽然本次 astro.config 未开启，但留着不伤身） */
   :global(code-block .highlighted-word) {
     background-color: var(--cb-highlighted-word-bg);
     border-radius: 0.2rem;

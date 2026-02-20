@@ -15,28 +15,28 @@
 </script>
 
 {#if state && (state.posts || state.categories || state.tags)}
-  <nav class="state">
+  <nav class="state flex justify-center leading-[1.4] mt-2.5 overflow-hidden text-center whitespace-nowrap">
     {#if state.posts && state.posts > 0}
-      <div class="item posts">
-        <a href="/archives/">
-          <span class="count">{state.posts}</span>
-          <span class="name">{t("sidebar.state.posts")}</span>
+      <div class="item px-[15px]">
+        <a href="/archives/" class="no-underline [border-bottom:none] text-inherit">
+          <span class="block text-lg font-semibold text-center">{state.posts}</span>
+          <span class="text-[0.8125rem] text-inherit">{t("sidebar.state.posts")}</span>
         </a>
       </div>
     {/if}
     {#if state.categories && state.categories > 0}
-      <div class="item categories">
-        <a href="/categories/">
-          <span class="count">{state.categories}</span>
-          <span class="name">{t("sidebar.state.categories")}</span>
+      <div class="item px-[15px]">
+        <a href="/categories/" class="no-underline [border-bottom:none] text-inherit">
+          <span class="block text-lg font-semibold text-center">{state.categories}</span>
+          <span class="text-[0.8125rem] text-inherit">{t("sidebar.state.categories")}</span>
         </a>
       </div>
     {/if}
     {#if state.tags && state.tags > 0}
-      <div class="item tags">
-        <a href="/tags/">
-          <span class="count">{state.tags}</span>
-          <span class="name">{t("sidebar.state.tags")}</span>
+      <div class="item px-[15px]">
+        <a href="/tags/" class="no-underline [border-bottom:none] text-inherit">
+          <span class="block text-lg font-semibold text-center">{state.tags}</span>
+          <span class="text-[0.8125rem] text-inherit">{t("sidebar.state.tags")}</span>
         </a>
       </div>
     {/if}
@@ -44,39 +44,8 @@
 {/if}
 
 <style>
-  .state {
-    display: flex;
-    justify-content: center;
-    line-height: 1.4;
-    margin-top: 0.625rem;
-    overflow: hidden;
-    text-align: center;
-    white-space: nowrap;
-  }
-
-  .state .item {
-    padding: 0 0.9375rem;
-  }
-
+  /* :not 伪类选择器无法原子化，保留 */
   .state .item:not(:first-child) {
     border-left: 0.0625rem solid var(--grey-4);
-  }
-
-  .state .item a {
-    border-bottom: none;
-    text-decoration: none;
-    color: inherit;
-  }
-
-  .state .item .count {
-    display: block;
-    font-size: 1.125rem;
-    font-weight: 600;
-    text-align: center;
-  }
-
-  .state .item .name {
-    color: inherit;
-    font-size: 0.8125rem;
   }
 </style>

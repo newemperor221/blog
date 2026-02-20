@@ -21,7 +21,7 @@
   const { config, menuSource, siteState, avatarImage }: Props = $props();
 </script>
 
-<div class="overview">
+<div class="w-full">
   <SidebarAuthor
     author={config.author || ""}
     description={config.description || ""}
@@ -35,8 +35,4 @@
   <SidebarMenu menu={menuSource} />
 </div>
 
-<style>
-  .overview {
-    width: 100%;
-  }
-</style>
+

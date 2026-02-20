@@ -3,7 +3,7 @@
 </script>
 
 <div
-  class='sidebar-overlay'
+  class='fixed inset-0 bg-black/50 z-7 cursor-pointer lg:hidden [animation:fadeIn_0.3s_ease]'
   onclick={toggleSidebar}
   role='button'
   tabindex='0'
@@ -15,30 +15,12 @@
 ></div>
 
 <style>
-  .sidebar-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 7;
-    animation: fadeIn 0.3s ease;
-    cursor: pointer;
-  }
-
   @keyframes fadeIn {
     from {
       opacity: 0;
     }
     to {
       opacity: 1;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .sidebar-overlay {
-      display: none;
     }
   }
 </style>
