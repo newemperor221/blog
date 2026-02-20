@@ -106,8 +106,6 @@ export default defineConfig({
       serverURL: "",
       // 推荐与站点语言保持一致
       lang: "zh-CN",
-      // trailingSlash: "always" 场景下建议保持 pathname 原样
-      // dark: "auto",
     },
   },
   nyxPlayer: {
@@ -120,6 +118,12 @@ export default defineConfig({
         url: "https://music.163.com/#/playlist?id=2943811283",
       },
     ],
+  },
+  visibilityTitle: {
+    enable: true,
+    leaveTitle: "👀 你先忙，我等你回来~",
+    returnTitle: "🎉 欢迎回来！",
+    restoreDelay: 3000,
   },
   home: {
     selectedCategories: [{ name: "Tutorial" }, { name: "Frontend" }],

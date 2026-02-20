@@ -298,6 +298,29 @@ interface FriendsConfig {
   links: FriendLinkConfig[];
 }
 
+interface VisibilityTitleConfig {
+  /**
+   * 是否启用页面可视度标题切换。
+   */
+  enable?: boolean;
+
+  /**
+   * 切换到其他标签页时显示的标题。
+   */
+  leaveTitle?: string;
+
+  /**
+   * 返回当前标签页时显示的标题。
+   */
+  returnTitle?: string;
+
+  /**
+   * 返回后恢复原始标题的延迟（毫秒）。
+   * - 默认 3000
+   */
+  restoreDelay?: number;
+}
+
 /**
  * 协议类型
  * CC 4.0 系列：BY, BY-SA, BY-ND, BY-NC, BY-NC-SA, BY-NC-ND
@@ -400,6 +423,13 @@ export interface ShokaXThemeConfig {
    * - 定义友链页面展示的卡片数据
    */
   friends?: FriendsConfig;
+
+  /**
+   * 页面可视度标题切换配置。
+   * - 失焦：显示 leaveTitle
+   * - 聚焦：显示 returnTitle，延迟 restoreDelay 后恢复原始标题
+   */
+  visibilityTitle?: VisibilityTitleConfig;
 }
 
 export function defineConfig(config: ShokaXThemeConfig) {
