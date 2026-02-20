@@ -54,8 +54,8 @@ export default defineConfig({
     // - url: 推荐填 "cover-1" ~ "cover-6"（来自 src/components/Images.astro 预设），
     //        或者填 public 路径/远程 URL（会使用 <img> 兜底渲染）
     fixedCover: {
-      enable: false,
-      // url: "cover-1",
+      enable: true,
+      url: "cover-1",
     },
     // gradient: true, // 渐变模式
     nextGradientCover: false, // 文章导航使用渐变背景
