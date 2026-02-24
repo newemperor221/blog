@@ -33,7 +33,7 @@ import spoiler from "./src/remark-plugins/spoiler.mjs";
 
 import Font from "vite-plugin-font";
 
-import PlayformInline from '@playform/inline'
+import PlayformInline from "@playform/inline";
 
 import process from "process";
 
@@ -95,8 +95,8 @@ export default defineConfig({
     }),
     mdx(),
     PlayformInline({
-      Logger: 0
-    })
+      Logger: 0,
+    }),
   ],
 
   vite: {
@@ -110,7 +110,7 @@ export default defineConfig({
         scanFiles: ["src/**/*.{svelte,ts,tsx,js,jsx,md,mdx,json,astro}"],
         css: {
           fontDisplay: "optional",
-        }
+        },
       }),
       esToolkitPlugin(),
     ],

@@ -68,7 +68,7 @@
 
 <nav
   id="nav"
-  class={`h-12.5 w-full z-9 backdrop-blur-8 backdrop-saturate-180 ${atTop ? "nav-top" : "nav-bg"}`.trim()}
+  class={`h-12.5 fixed top-0 w-full z-9 backdrop-blur-8 backdrop-saturate-180 ${atTop ? "nav-top" : "nav-bg"}`.trim()}
   style={showNav ? "" : "transform: translateY(-100%);"}
 >
   <div
@@ -101,8 +101,6 @@
 <style>
   #nav {
     transition: transform 0.4s ease;
-    position: fixed;
-    top: 0;
   }
 
   .nav-bg {

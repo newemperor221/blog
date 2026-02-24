@@ -123,12 +123,12 @@
 </script>
 
 <div
-  class="pagefind fixed top-12 z-999 m-12 max-h-80% max-w-100vw min-h-70% w-[calc(100vw_-_7rem)]
+  class="pagefind pagefind-hidden fixed top-12 z-999 m-12 max-h-80% max-w-100vw min-h-70% w-[calc(100vw_-_7rem)]
   overflow-x-hidden overflow-y-scroll rounded-lg p-2
   bg-gradient-to-b from-black/50 to-black/60
   backdrop-blur-2xl slide-down"
   class:dark={isDark}
-  class:pagefind-hidden={!visible}
+  class:pagefind-visible={visible}
 >
   {#if isDev}
     <div class="dev-tip p-6 text-center">
@@ -165,6 +165,12 @@
     opacity: 0 !important;
     pointer-events: none;
     transform: translateY(-100%);
+  }
+
+  .pagefind-visible {
+    opacity: 1 !important;
+    pointer-events: auto;
+    transform: translateY(0);
   }
 
   .slide-down {

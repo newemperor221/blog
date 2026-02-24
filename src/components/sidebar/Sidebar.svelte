@@ -60,7 +60,7 @@
 
   let activePanel: PanelType = $state("overview");
   let sidebarElement: HTMLElement | null = $state(null);
-  let isAffix = $state(false);
+  let isAffix = $state(true);
 
   const menuSource = $derived(navLinks);
 
