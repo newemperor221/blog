@@ -46,6 +46,7 @@ const assetSrc = !isStringSrc ? (src as ImageMetadata) : undefined;
           layout="constrained"
           format="avif"
           priority={true}
+          decoding="async"
           class="cover-image"
         />
       )}
@@ -67,6 +68,7 @@ const assetSrc = !isStringSrc ? (src as ImageMetadata) : undefined;
       format="avif"
       class="single-image"
       priority={true}
+      decoding="async"
     />
   )
 }

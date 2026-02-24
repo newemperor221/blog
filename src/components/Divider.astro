@@ -33,4 +33,10 @@ const text = title || content || "";
   .divider:after {
     background-position: 1rem 50%;
   }
+
+  :global(:root[data-theme="dark"]) .divider:after,
+  :global(:root[data-theme="dark"]) .divider:before {
+    opacity: 0.55;
+    filter: brightness(0.45);
+  }
 </style>
