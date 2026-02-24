@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import { getT } from "@/i18n";
 import themeConfig from "@/theme.config";
-import './footer.css'
+import "./footer.css";
 
 interface Props {
   config?: {
@@ -62,7 +62,7 @@ const iconName = config.icon?.name || "sakura rotate";
 const iconColor = config.icon?.color || "#ffc0cb";
 ---
 
-<footer id="footer" class="text-grey-5 text-sm bg-body-bg-shadow mt-12 py-8">
+<footer id="footer" class="text-grey-5 text-sm bg-body-bg-shadow mt-2 py-2">
   <div class="inner mx-auto w-full max-w-3xl px-4">
     <div class="status text-center w-full">
       <!-- Copyright Section -->
@@ -161,7 +161,7 @@ const iconColor = config.icon?.color || "#ffc0cb";
 
 <style>
   .inner {
-    margin: 2rem auto 0.625rem;
+    margin: 0 auto 0.625rem;
     position: relative;
   }
 

@@ -1,28 +1,29 @@
-<script lang='ts'>
-  import NavItem from './NavItem.svelte'
+<script lang="ts">
+  import NavItem from "./NavItem.svelte";
 
   interface Props {
-    href?: string
-    text?: string
-    icon?: string | null
-    class?: string
-    [key: string]: any
+    href?: string;
+    text?: string;
+    icon?: string | null;
+    class?: string;
+    [key: string]: any;
   }
 
   const {
-    href = '#',
+    href = "#",
     text,
     icon = null,
-    class: className = '',
-    ...restProps
-  }: Props = $props()
+    class: className = "",
+  }: Props = $props();
 
-  const iconClasses = $derived(icon ? `${icon} icon-nav text-xl vertical-text-bottom inline-block` : '')
-  const mergedClass = $derived([className].filter(Boolean).join(' '))
+  const iconClasses = $derived(
+    icon ? `${icon} icon-nav text-xl vertical-text-bottom inline-block` : "",
+  );
+  const mergedClass = $derived([className].filter(Boolean).join(" "));
 </script>
 
-<NavItem class={mergedClass} {...restProps}>
-  <a href={href}>
+<NavItem class={mergedClass}>
+  <a {href}>
     {#if icon}
       <div class={iconClasses}></div>
     {/if}

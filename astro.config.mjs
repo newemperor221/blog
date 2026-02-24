@@ -58,6 +58,12 @@ export default defineConfig({
       compilerOptions: {
         customElement: true,
       },
+      onwarn(warning, handler) {
+        if (warning.code === "a11y-missing-attribute") {
+          return;
+        }
+        handler(warning);
+      },
     }),
     sitemap(),
     hyacinePlugin(),
