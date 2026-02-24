@@ -1,5 +1,5 @@
 ---
-title: Customizing the Theme
+title: Explore the various customization options available in ShokaX theme configuration.
 date: 2025-12-04
 description: Explore the various customization options available in ShokaX theme configuration.
 tags: [customization, config, styling]
