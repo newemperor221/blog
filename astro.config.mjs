@@ -52,9 +52,7 @@ export default defineConfig({
 
   integrations: [
     UnoCSS({
-      injectReset: true,
-      mode: "dist-chunk",
-      injectEntry: process.env["NODE_ENV"] === "development",
+      injectReset: true
     }),
     svelte({
       compilerOptions: {

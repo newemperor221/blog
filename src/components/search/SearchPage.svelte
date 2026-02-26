@@ -143,7 +143,7 @@
     onclick={() => (visible = false)}
     role="button"
     tabindex="0"
-    aria-label={t("search.close")}
+    aria-label="close search"
     aria-controls="pagefind"
     onkeydown={(e) => ["Enter", " "].includes(e.key) && (visible = false)}
   ></div>

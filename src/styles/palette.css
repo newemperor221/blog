@@ -4,7 +4,7 @@
   --grey-2: #f7f7f7;
   --grey-3: #eff2f3;
   --grey-4: #cccccc;
-  --grey-5: #999999;
+  --grey-5: #757575;
   --grey-6: #666666;
   --grey-7: #333333;
   --grey-8: #222222;
@@ -23,7 +23,7 @@
   --color-cyan-light-old: #e3fdf5;
   --color-cyan-light: rgba(227, 253, 245, 0.72);
 
-  --color-red: #e9546b;
+  --color-red: #e22843;
   --color-pink: #ed6ea0;
   --color-orange: #ec8c69;
   --color-yellow: #eab700;
@@ -106,7 +106,7 @@
   --color-pink-light: #322d31;
   --color-cyan-light: #2d3230;
 
-  --color-red: rgba(233, 84, 107, 0.9);
+  --color-red: rgba(225, 40, 67, 0.9);
   --color-pink: rgba(237, 110, 160, 0.8);
   --color-orange: rgba(236, 140, 105, 0.8);
   --color-yellow: #f5eab7;
