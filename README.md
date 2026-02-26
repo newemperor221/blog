@@ -2,7 +2,9 @@
 
 这是 [Hexo Theme ShokaX](https://github.com/theme-shoka-x/hexo-theme-shokaX) 在 Astro 上的重构版本，使用 Astro + Svelte 5 + UnoCSS 技术栈
 
-##✨ 功能特性
+[<img width="3840" height="2160" alt="1" src="https://github.com/user-attachments/assets/e740fc5f-c66f-4500-9da8-036477a42af6" />](https://preview.astro.kaitaku.xyz/)
+
+## ✨ 功能特性
 
 - 延续 ShokaX 原版设计语言的优雅界面
 - 内置日间 / 暗夜主题模式
