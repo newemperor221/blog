@@ -55,7 +55,7 @@ export default defineConfig({
     //        或者填 public 路径/远程 URL（会使用 <img> 兜底渲染）
     fixedCover: {
       enable: true,
-      url: "cover-1",
+      url: "cover-4",
     },
     // gradient: true, // 渐变模式
     nextGradientCover: false, // 文章导航使用渐变背景
@@ -130,7 +130,7 @@ export default defineConfig({
     },
   },
   nyxPlayer: {
-    enable: true,
+    enable: false,
     preset: "shokax",
     darkModeTarget: ':root[data-theme="dark"]',
     urls: [
