@@ -151,8 +151,8 @@ export default defineConfig({
     pageSize: 5,
     title: {
       behavior: "default",
-      customTitle: ""
-    }
+      customTitle: "",
+    },
   },
   friends: {
     title: "友链",

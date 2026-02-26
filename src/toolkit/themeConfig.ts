@@ -276,9 +276,9 @@ interface HomeConfig {
    * default: 按照 ShokaX 经典行为，拼接brand、title和subtitle
    */
   title?: {
-    behavior?: "default" | "custom"
+    behavior?: "default" | "custom";
     customTitle?: string;
-  }
+  };
 }
 
 export interface FriendLinkConfig {

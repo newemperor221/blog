@@ -77,23 +77,27 @@
     <LeftNavBtn clickCallback={clickToggleCallback} />
     <MenuBar {name} {navLinks} />
     <RightNavBar>
-      <button
-        type="button"
-        class="text-5 pb-2.5 pl-2 pr-2 pt-2.5 border-none bg-transparent cursor-pointer"
-        onclick={handleToggleTheme}
-        aria-label="Toggle theme"
-      >
-        <div class={isDark ? "i-ri-moon-line" : "i-ri-sun-line"}></div>
-      </button>
-      <button
-        type="button"
-        id="search"
-        class="text-5 pb-2.5 pl-2 pr-2 pt-2.5 border-none bg-transparent cursor-pointer"
-        onclick={handleSearch}
-        aria-label="Search"
-      >
-        <div class="i-ri-search-line"></div>
-      </button>
+      <li>
+        <button
+          type="button"
+          class="text-5 pb-2.5 pl-2 pr-2 pt-2.5 border-none bg-transparent cursor-pointer"
+          onclick={handleToggleTheme}
+          aria-label="Toggle theme"
+        >
+          <div class={isDark ? "i-ri-moon-line" : "i-ri-sun-line"}></div>
+        </button>
+      </li>
+      <li>
+        <button
+          type="button"
+          id="search"
+          class="text-5 pb-2.5 pl-2 pr-2 pt-2.5 border-none bg-transparent cursor-pointer"
+          onclick={handleSearch}
+          aria-label="Search"
+        >
+          <div class="i-ri-search-line"></div>
+        </button>
+      </li>
     </RightNavBar>
   </div>
 </nav>

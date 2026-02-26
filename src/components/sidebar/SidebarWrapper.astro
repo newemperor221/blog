@@ -64,10 +64,11 @@ const authorLabel = config.author || t("post.author");
         src={avatar}
         alt={authorLabel}
         priority
-        quality="high"
+        quality={65}
         layout="constrained"
         class="avatar-image"
         format="avif"
+        widths={[160, 320]}
         height={160}
         width={160}
       />
