@@ -2,9 +2,25 @@
 
 这是 [Hexo Theme ShokaX](https://github.com/theme-shoka-x/hexo-theme-shokaX) 在 Astro 上的重构版本，使用 Astro + Svelte 5 + UnoCSS 技术栈
 
+##✨ 功能特性
+
+- 延续 ShokaX 原版设计语言的优雅界面
+- 内置日间 / 暗夜主题模式
+- 通过 Hyc 交互式安装、配置和使用博客
+- 基于 Hyacine Plugins 的可扩展插件体系
+- 丰富的 Markdown / MDX 增强特性
+- 支持标签云、时间线视图与分类树结构
+- 基于 Pagefind 的无后端高性能全文搜索
+- 独立的友链页面支持
+- 自动生成智能目录（ToC）
+- 以性能优先为核心的设计与开发理念
+- 更多扩展能力，详见文档说明
+
+## 安装
+
 本项目建议使用 [Bun](https://bun.sh/) 运行，不保证与 Nodejs 的兼容性
 
-您可以直接将本仓库 Clone 到本地或者创建一个 Fork（并为我们点一个 Star 😜），我们建议使用后者，这样在我们发布更新时您可以更轻松地迁移到新版本。
+您可以直接将本仓库 Clone 到本地（并为我们点一个 Star 😜），来开始使用。也可使用[由 Hyc 提供的交互式安装支持]()
 然后进入如下操作：
 
 ```bash
@@ -17,9 +33,7 @@ bun run dev
 bun run build
 ```
 
-查看完整文档：[ShokaX Astro 文档](https://docs.astro.kaitaku.xyz/start/guides/)
-
-本仓库自带`vercel.json`和`netlify.toml`以提供在对应平台上的安全性与缓存优化，您可以直接将本仓库部署到相关平台上
+然后，查看完整文档来进行下一步：[ShokaX Astro 文档](https://docs.astro.kaitaku.xyz/start/guides/)
 
 ## 备注
 

@@ -31,3 +31,5 @@ jobs:
 
       - name: Run Lighthouse CI
         run: bunx --bun lhci autorun --config=.lighthouserc.json
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
