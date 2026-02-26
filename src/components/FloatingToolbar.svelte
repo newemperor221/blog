@@ -14,7 +14,7 @@
   let isMobile = $state(false);
   let isVisible = $state(true);
 
-  const percentLabel = $derived(`${Math.round(scrollPercent)}%`);
+  const percentLabel = $derived(`${Math.max(0, Math.round(scrollPercent))}%`);
   const nyxEnabled = $derived(
     Boolean(nyxPlayer?.enable && nyxPlayer.urls && nyxPlayer.urls.length > 0),
   );
