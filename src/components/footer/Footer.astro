@@ -17,6 +17,7 @@ interface Props {
       enable?: boolean;
       icon?: string;
       icpnumber?: string;
+      icpurl?: string;
       beian?: string;
       recordcode?: string;
     };
@@ -127,7 +128,7 @@ const iconColor = config.icon?.color || "#ffc0cb";
         config.icp?.enable && (
           <div class="icp block text-xs leading-loose mt-4">
             <a
-              href="https://beian.miit.gov.cn"
+              href={config.icp.icpurl || "https://beian.miit.gov.cn/"}
               target="_blank"
               class="text-grey-5 hover:opacity-80 border-b border-dashed"
             >

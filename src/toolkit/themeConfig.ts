@@ -138,6 +138,12 @@ interface FooterConfig {
     icpnumber?: string;
 
     /**
+     * ICP备案查询链接。
+     * - 填写完整 URL（如 "https://beian.miit.gov.cn/"）
+     */
+    icpurl?: string;
+
+    /**
      * 公安备案号。
      * - 示例："京公网安备 11010502001234号"
      */
