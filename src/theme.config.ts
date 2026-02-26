@@ -148,6 +148,10 @@ export default defineConfig({
   home: {
     selectedCategories: [{ name: "Tutorial" }, { name: "Frontend" }],
     pageSize: 5,
+    title: {
+      behavior: "default",
+      customTitle: ""
+    }
   },
   friends: {
     title: "友链",

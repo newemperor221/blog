@@ -264,6 +264,15 @@ interface HomeConfig {
    * - 置顶文章始终显示在首页第一页顶部，不占用分页配额
    */
   pageSize?: number;
+
+  /**
+   * 控制首页标题显示行为
+   * default: 按照 ShokaX 经典行为，拼接brand、title和subtitle
+   */
+  title?: {
+    behavior?: "default" | "custom"
+    customTitle?: string;
+  }
 }
 
 export interface FriendLinkConfig {
