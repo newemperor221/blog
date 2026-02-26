@@ -39,7 +39,9 @@ const {
         <a href={url} title={title}>
           <Image
             src={cover}
-            layout="constrained"
+            widths={[320, 400, 480, 640, 800, 960]}
+            sizes="(min-width: 768px) 480px, 90vw"
+            quality={55}
             alt={title}
             priority={!lazy}
             format="avif"
