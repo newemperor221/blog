@@ -2,7 +2,7 @@
 import { defineConfig } from "./toolkit/themeConfig";
 
 export default defineConfig({
-  siteName: "ShokaX",
+  siteName: "woioeow's blog",
   locale: "zh-CN", // 网站语言: "zh-CN" | "en"
   nav: [
     {
@@ -11,34 +11,19 @@ export default defineConfig({
       icon: "i-ri-home-line",
     },
     {
-      text: "文章",
-      href: "/posts/",
-      icon: "i-ri-quill-pen-fill",
-      dropbox: {
-        enable: true,
-        items: [
-          {
-            href: "/categories/",
-            text: "分类",
-            icon: "i-ri-book-shelf-fill",
-          },
-          {
-            href: "/tags/",
-            text: "标签",
-            icon: "i-ri-price-tag-3-fill",
-          },
-          {
-            href: "/archives/",
-            text: "归档",
-            icon: "i-ri-archive-line",
-          },
-        ],
-      },
+      text: "分类",
+      href: "/categories/",
+      icon: "i-ri-book-shelf-fill",
     },
     {
-      text: "友链",
-      href: "/friends/",
-      icon: "i-ri-link",
+      text: "标签",
+      href: "/tags/",
+      icon: "i-ri-price-tag-3-fill",
+    },
+    {
+      text: "归档",
+      href: "/archives/",
+      icon: "i-ri-archive-line",
     },
   ],
   brand: {
@@ -57,29 +42,37 @@ export default defineConfig({
       enable: true,
       url: "cover-4",
     },
-    // gradient: true, // 渐变模式
-    nextGradientCover: false, // 文章导航使用渐变背景
+    gradient: true, // 渐变模式
+    nextGradientCover: true, // 文章导航使用渐变背景
   },
   sidebar: {
-    author: "Your Name",
+    author: "woioeow",
     description: "A brief introduction",
     social: {
       github: {
-        url: "https://github.com/yourname",
+        url: "https://github.com/",
         icon: "i-ri-github-fill",
       },
       twitter: {
-        url: "https://twitter.com/yourname",
+        url: "https://twitter.com/",
         icon: "i-ri-twitter-x-line",
       },
-      email: {
-        url: "mailto:your@email.com",
-        icon: "i-ri-mail-line",
+      facebook: {
+        url: "https://facebook.com/",
+        icon: "i-ri-facebook-fill",
+      },
+      discord: {
+        url: "https://discord.com/",
+        icon: "i-ri-discord-fill",
+      },
+      tiktok: {
+        url: "https://tiktok.com",
+        icon: "i-ri-tiktok-line",
       },
     },
   },
   footer: {
-    since: 2025,
+    since: 2026,
     icon: {
       name: "sakura rotate",
       color: "#ffc0cb",
@@ -87,7 +80,7 @@ export default defineConfig({
     count: true,
     powered: true,
     icp: {
-      enable: true,
+      enable: false,
       // icon: '/beian-icon.png',
       icpnumber: "津ICP备2022001375号",
       icpurl: "https://beian.miit.gov.cn/",
