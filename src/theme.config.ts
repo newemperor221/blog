@@ -42,7 +42,7 @@ export default defineConfig({
       enable: true,
       url: "cover-4",
     },
-    gradient: true, // 渐变模式
+    //gradient: true // 渐变模式
     nextGradientCover: false, // 文章导航使用渐变背景
   },
   sidebar: {
@@ -72,7 +72,7 @@ export default defineConfig({
     },
   },
   footer: {
-    since: 2026,
+    since: 2025,
     icon: {
       name: "sakura rotate",
       color: "#ffc0cb",
@@ -104,7 +104,7 @@ export default defineConfig({
   },
   hyc: {
     // HYC 扩展总开关：关闭后其所有子功能不可用
-    enable: false,
+    enable: true,
     aiSummary: {
       // AI 摘要卡片开关（受 hyc.enable 总开关控制）
       enable: true,

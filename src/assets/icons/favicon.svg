@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00f5d4"/>
+      <stop offset="100%" stop-color="#00c2a8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="64" height="64" rx="14" fill="#071a18"/>
+
+  <!-- 发光效果 -->
+  <filter id="glow">
+    <feGaussianBlur stdDeviation="2.5" result="blur"/>
+    <feMerge>
+      <feMergeNode in="blur"/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+  </filter>
+
+  <!-- 终端符号 -->
+  <text x="50%" y="52%"
+        text-anchor="middle"
+        dominant-baseline="middle"
+        font-family="Consolas, monospace"
+        font-size="28"
+        fill="url(#g)"
+        filter="url(#glow)">
+    >_
+  </text>
+</svg>
