@@ -43,7 +43,7 @@ export default defineConfig({
       url: "cover-4",
     },
     gradient: true, // 渐变模式
-    nextGradientCover: true, // 文章导航使用渐变背景
+    nextGradientCover: false, // 文章导航使用渐变背景
   },
   sidebar: {
     author: "woioeow",
