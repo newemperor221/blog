@@ -61,3 +61,10 @@ wsl -d Debian
 Debian.exe config --default-user <普通用户>
 ```
 
+## 修改软件源
+
+找到系统的`/etc/apt/sources.list`文件
+
+把[中科大软件源](https://mirrors.ustc.edu.cn/help)的Debian和Debian Security粘贴进去
+
+执行`sudo apt-get update && sudo apt-get upgrade -y`更新
